@@ -165,14 +165,15 @@
                                             <div class="user-phone">
                                                 <h4 style="margin-left: 3px;">Time</h4>
                                             </div>
-                                            <div class="user-registration">
-                                                <h4 style="margin-left: 0;">New Route</h4>
-                                            </div>
+                                           
                                             <div class="action-btn">
-                                            <h4 style="margin-left: 3px;">New Time</h4>
+                                            <h4 style="margin-left: -50px;">New Time</h4>
                                             </div>
                                             <div class="user-phone">
-                                                <h4 style="margin-left: 3px;">New Trips</h4>
+                                                <h4 style="margin-left: -100px;">New Trips</h4>
+                                            </div>
+                                            <div class="user-location">
+                                                <h4 style="margin-left: -150px;">New Route</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -214,27 +215,27 @@
                                             </div>
 
 
+                                    
+                                                                                                                                         
+                                            <div class="action-btn">
+                                      
+                                            <input class="form-control" name="times[]" type="text" value="{{$assignment->time}}"  id="times-{{ $assignment->id }}" disabled style="width: 70%;position: relative; left: -50px;">
+                                            </div>
+                                            <div class="user-phone">
+                                                <p class="info-title">S: </p>
+                                                <input class="form-control" name="trips[]" type="text" value="{{$assignment->trips}}"  id="trips-{{ $assignment->id }}" disabled style="width: 70%;position: relative; left: -100px;">
+                                            </div>
                                             <div class="user-location">
                                                 <p class="info-title">Registration: </p>
                                                 <!-- <p class="usr-location" data-location="Boston, USA">{{$assignment->route}}</p> -->
                                            
-                                                <select name="routes[]"  id="routes-{{ $assignment->id }}" class="form-select" disabled>
+                                                <select name="routes[]"  id="routes-{{ $assignment->id }}" class="form-select" disabled  style="width: 200%;position: relative; left: -150px;">
                                                                     <option value="{{$assignment->routeId}}">{{$assignment->route}}</option>
                                                                     @foreach ($routes as  $rout)
                                                                     <option value="{{$rout->id}}">{{$rout->from}} to {{$rout->to}}</option>   
                                                                     @endforeach                                                                                                                            
                                                                    </select>  
                                             </div>
-                                                                                                                                         
-                                            <div class="action-btn">
-                                      
-                                            <input class="form-control" name="times[]" type="text" value="{{$assignment->time}}"  id="times-{{ $assignment->id }}" disabled>
-                                            </div>
-                                            <div class="user-phone">
-                                                <p class="info-title">S: </p>
-                                                <input class="form-control" name="trips[]" type="text" value="{{$assignment->trips}}"  id="trips-{{ $assignment->id }}" disabled>
-                                            </div>
-                                        
                                         </div>
                                     </div>  
                                     @endforeach                                    
