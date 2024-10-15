@@ -22,6 +22,7 @@
                     <form class="row-6"  method="post"  action="{{ route('summary.filter') }}">
                     @csrf   
     
+                    
                     <div class="row g-3">
                     <div class="col-sm-5">
                     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
