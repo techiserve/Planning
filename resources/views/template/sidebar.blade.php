@@ -24,6 +24,7 @@
                         <div class="heading"><span>SIC Modules</span></div>
                     </li>
 
+                    
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
                     <!-- Planning Module -->
                     <li class="menu">                  
