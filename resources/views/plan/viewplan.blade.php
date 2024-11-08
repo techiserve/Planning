@@ -4,6 +4,10 @@
 .searchable-items.list {
     display: flex;
     flex-direction: column;
+    max-height: 600px; /* Adjust the height as needed */
+    overflow-y: auto;
+    border: 1px solid #ddd; /* Optional: add a border around the scrollable area */
+    border-radius: 10px;
 }
 
 /* Align the header and data rows uniformly */

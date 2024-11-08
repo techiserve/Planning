@@ -47,9 +47,11 @@
                             <td><span class="in-status">{{ $asset->Type }}</span></td>                                                                                                   
                             <td>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#selectDateModal" 
-                data-route-id="{{ $asset->id }}">
-            Select Date for Plan
-        </button>                         
+                                        data-route-id="{{ $asset->id }}">
+                                    Select Date for Plan
+                            </button>                
+                                
+            
                             </td>
                         </tr>
                         @endforeach
