@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Userrole;
 use App\Models\User;
+use App\Models\Route;
 use App\Models\Asset;
 use Alert;
 use Auth;
@@ -18,9 +19,9 @@ class RouteController extends Controller
     {
         $users = User::all();
         $roles = Userrole::all();
-        $assets = Asset::all();
+        $routes = Route::all();
 
-        return view('assets.index', compact('assets','users'));
+        return view('routes.index', compact('routes','users'));
     }
 
     /**

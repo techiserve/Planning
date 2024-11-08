@@ -80,7 +80,7 @@
                     </li>
                     @endif
 
-                    <!-- @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 || Auth::user()->userRole == 11)
+                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 || Auth::user()->userRole == 11)
                    
                     <li class="menu">
                         <a href="#driver" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -101,7 +101,7 @@
                            
                         </ul>
                     </li>
-                    @endif -->
+                    @endif
 
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
                     <!-- Contract Management -->
