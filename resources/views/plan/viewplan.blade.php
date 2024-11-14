@@ -10,6 +10,15 @@
     border-radius: 10px;
 }
 
+.items-header-section {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Optional: background color to match page */
+    z-index: 10; /* Ensure header stays above content */
+    border-bottom: 2px solid #ddd; /* Optional: add a border under the header */
+}
+
+
 /* Align the header and data rows uniformly */
 .items-header-section, .items {
     display: flex;
@@ -85,34 +94,85 @@
                         </nav>
                     </div>
                     <!-- /BREADCRUMB -->
-                            <!-- BEGIN GLOBAL MANDATORY STYLES -->
-                            <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+                        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+                     <div class="row layout-spacing layout-top-spacing" id="cancel-row">
                         <div class="col-lg-12">
                             <div class="widget-content searchable-container list">
     
-                           
-                            <!--  -->
-                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                            <div class="payment-history layout-spacing ">
-                                <div class="widget-content widget-content-area">                             
+                            <div class="col-12">
+    <div class="payment-history layout-spacing ">
+        <div class="widget-content widget-content-area">
+            <div class="list-group">
 
-                                    <div class="list-group">
-                                        <div class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="me-auto">
-                                                <div class="fw-bold title">Route :</div>
-                                                <p class="sub-title mb-0">{{$route->from}} to {{$route->to}}</p>
-                                            </div>
-                                            <span class="pay-pricing align-self-center me-3">{{$date->format('d F Y')}}</span>
-                                            <div class="btn-group dropstart align-self-center" role="group">
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                </div>
+                <!-- Row 1: Route and Start Date -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Route Information -->
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold title">Route :</div>
+                                <p class="sub-title mb-0">{{ $route->from }} to {{ $route->to }}</p>
                             </div>
                         </div>
-                            <!--  -->
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Start Date -->
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold">Start Date:</div>
+                                <p class="sub-title mb-0">{{ $date->format('d F Y') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: End Date and Loading Number -->
+                <div class="row">
+                    <div class="col-md-6">
+                        @if($enddate)
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold">End Date:</div>
+                                <p class="sub-title mb-0">{{ $enddate->format('d F Y') }}</p>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="col-md-6">
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold">Loading Number:</div>
+                                <p class="sub-title mb-0">{{ $loading }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Max Loads and Product -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold">Max Loads:</div>
+                                <p class="sub-title mb-0">{{ $maxloads }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold">Product:</div>
+                                <p class="sub-title mb-0">{{ $product }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
                   
 
                           
@@ -141,7 +201,7 @@
 
 
 
-                            <form action="/plan/setplan" method="POST">
+                              <form action="/plan/setplan" method="POST">
                             @csrf
 
                                 <div class="searchable-items list">
@@ -163,13 +223,16 @@
                                                 <h4 style="margin-left: 0;">Registration</h4>
                                             </div>
                                             <div class="user-phone">
-                                                <h4 style="margin-left: 3px;"># Trips Planned</h4>
+                                                <h4 style="margin-left: 3px;">Number of Loads</h4>
                                             </div>                                        
                                             <div class="action-btn">
                                             <h4 style="margin-left: 3px;">Time</h4>
                                             </div>
                                             <div class="user-status">
                                             <h4 style="margin-left: 3px;">Status</h4>
+                                        </div>
+                                        <div class="new-column">
+                                            <h4 style="margin-left: 3px;">Driver</h4>
                                         </div>
                                         </div>
                                     </div>
@@ -183,7 +246,7 @@
                                                         <input class="form-check-input inbox-chkbox contact-chkbox truck-checkbox" name="truck_ids[]" value="{{ $truck->id }}" type="checkbox">
                                                     </div>
                                                 </div>
-                                           
+
                                                 
                                                 <div class="user-meta-info">
                                                     <p class="user-name" data-name="Alan Green">{{$truck->make}}</p>
@@ -204,7 +267,7 @@
                                             </div>
                                            
                                             <div class="action-btn">
-                                            <input class="form-control" name="times[]" type="text" id="times-{{ $truck->id }}" disabled>
+                                            <input class="form-control" name="times[]" type="time" id="times-{{ $truck->id }}" value="{{ $time }}" disabled>
                                             </div>
                                             <div class="user-status">
                                        
@@ -222,11 +285,25 @@
                                             @endif
 
                                                                                                                                                                                                                                                                                             
-                                            </select>  
-                                       
-                                      
+                                            </select>                        
+                                            </div>
+                                            <div class="new-column">
+                                            <select class="form-control" name="driver[]"  id="driver-{{ $truck->id }}" disabled>
+                                                <option value="" disabled selected>Select Driver</option>
+                                                @foreach ($truck->drivers as $driver)
+                                                    @foreach ($drivers as $dr)     
+                                                    @if($dr->id == $driver->driver_id)
+                                                    <option value="{{ $dr->id }}">{{ $dr->name }} {{ $dr->surname}}</option>     
+                                                    @endif                                                                     
+                                                    @endforeach
+                                                @endforeach
+                                            </select>
                                             </div>
                                             <input class="form-control" name="date" value="{{$date->format('Y-m-d') }}" type="hidden">
+                                            <input class="form-control" name="enddate" value="{{$enddate->format('Y-m-d')}}" type="hidden">
+                                            <input class="form-control" name="product" value="{{$product }}" type="hidden">
+                                            <input class="form-control" name="loading" value="{{$loading}}" type="hidden">
+                                            <input class="form-control" name="maxloads" value="{{$maxloads}}" type="hidden">
                                             <input class="form-control" name="route" value="{{$route->id }}" type="hidden">
                                             </div>
                                     </div>  
@@ -250,9 +327,14 @@
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
+    // JavaScript to toggle all checkboxes
+    document.getElementById('contact-check-all').addEventListener('change', function() {
+        var checkboxes = document.querySelectorAll('.truck-checkbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = document.getElementById('contact-check-all').checked;
+        });
+    });
 </script>
-
 
 
 

@@ -58,6 +58,8 @@
                         <tr>
                             <th>Date</th>
                             <th>Route</th>
+                            <th>Product</th>
+                            <th>Loading Number</th>
                             <th>Total Trips</th>
                             <th>Total Trucks</th>
                             <th>Actions</th>
@@ -71,6 +73,8 @@
                             <td><span class="inv-">{{ $details->date }}</span></td>
                          
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $details->route }}</p></span></td>
+                            <td><span class="inv-email"> {{ $details->product }}</span></td>
+                            <td><span class="in-status">{{ $details->loadingNumber }}</span></td> 
                             <td><span class="inv-email"> {{ $details->total_trips }}</span></td>
                             <td><span class="in-status">{{ $details->total_trucks }}</span></td>                                                                                                   
                             <td>
@@ -96,6 +100,7 @@
                                                 <th>Make</th>
                                                 <th>Model</th>
                                                 <th>License Number</th>
+                                                <th>Driver Name</th>
                                                
                                             </tr>
                                         </thead>
@@ -107,6 +112,7 @@
                                                     <td>{{ $truck->make }}</td>
                                                     <td>{{ $truck->model }}</td>
                                                     <td>{{ $truck->licenseNumber }}</td>
+                                                    <td>{{ $truck->name }} {{ $truck->surname }}</td>
                                                 </tr>
                                                 @endif
                                             @endforeach

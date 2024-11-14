@@ -18,6 +18,7 @@ class Plandetails extends Model
         'truck',
         'trips',
         'shift',
+        'driver_id',
         'time',
         'createdBy',
         'updatedBy',

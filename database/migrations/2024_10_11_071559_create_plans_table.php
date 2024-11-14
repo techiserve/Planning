@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('route')->nullable();
             $table->integer('routeId')->nullable();
+            $table->string('product')->nullable();
+            $table->string('maxloads')->nullable();
+            $table->string('loadingNumber')->nullable();
             $table->string('date')->nullable();
+            $table->string('enddate')->nullable();
             $table->string('createdBy')->nullable();
             $table->string('updatedBy')->nullable();
             $table->timestamps();

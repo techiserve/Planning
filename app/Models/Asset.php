@@ -43,4 +43,9 @@ class Asset extends Model
 
        
     ];
+
+    public function drivers()
+    {
+        return $this->hasMany(Assetdriver::class);
+    }
 }

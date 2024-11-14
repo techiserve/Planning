@@ -77,10 +77,30 @@
                 <form id="dateSelectionForm" action="{{ route('plan.dates') }}" method="POST">
                     @csrf
                     <input type="hidden" name="route_id" id="route-id">
-                    <label for="date">Choose a Date:</label>
+                    <label for="date">Choose Start Date:</label>
                     <select name="date" id="date" class="form-control">
                         <!-- This will be dynamically populated by JS -->
                     </select>
+
+                    <label for="end_date" class="mt-3">Choose End Date:</label>
+                    <select name="enddate" id="enddate" class="form-control">
+                        <!-- This will be dynamically populated by JS -->
+                    </select>
+
+                     <!-- Time Field -->
+                    <label for="time" class="mt-3">Choose Time:</label>
+                    <input type="time" name="time" id="time" class="form-control">
+
+                    <label for="product" class="mt-3">Loading Number:</label>
+                    <input type="text" name="loading" id="loading" class="form-control">
+
+                    <!-- Product Text Field -->
+                    <label for="product" class="mt-3">Product:</label>
+                    <input type="text" name="product" id="product" class="form-control">
+
+                    <label for="product" class="mt-3">Max Loads:</label>
+                    <input type="text" name="maxloads" id="loads" class="form-control">
+
                     <button type="submit" class="btn btn-success mt-3">Submit</button>
                 </form>
             </div>
@@ -104,15 +124,19 @@
         // Set the hidden input value for route ID
         modal.find('#route-id').val(routeId);
 
-        // Populate the date select box
-        var dates = @json($dates); // You can use the $dates array passed from the controller
+        // Populate the date and enddate select boxes
+        var dates = @json($dates); // Using the $dates array passed from the controller
 
         var dateSelect = modal.find('#date');
-        dateSelect.empty(); // Clear previous options
+        var endDateSelect = modal.find('#enddate');
+        
+        dateSelect.empty(); // Clear previous options in date field
+        endDateSelect.empty(); // Clear previous options in enddate field
 
-        // Append available dates as options
+        // Append available dates as options to both fields
         dates.forEach(function(date) {
             dateSelect.append(new Option(date, date));
+            endDateSelect.append(new Option(date, date));
         });
     });
 </script>

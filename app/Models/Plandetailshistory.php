@@ -18,6 +18,7 @@ class Plandetailshistory extends Model
         'date',
         'truck',
         'trips',
+        'driver_id',
         'shift',
         'time',
         'createdBy',

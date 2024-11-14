@@ -1036,15 +1036,14 @@ class PlanningController extends Controller
                 return back()->with('error', 'Failed to confrim plan!'); 
                }
 
-               return view('planning.dailyrouteschedule', compact('routeplan','routes','routeplanassets','routeplandrivers'));
-
-              
+               return view('planning.dailyrouteschedule', compact('routeplan','routes','routeplanassets','routeplandrivers'));        
             
             }
 
             public function allroutes()
             {
                  $routes = Route::all();
+                 $drivers = Driver::all();
 
                  $dates = [];
                  // Loop to generate the next 7 days including today
@@ -1059,7 +1058,7 @@ class PlanningController extends Controller
                      $routesWithDates[] = $route;
                  }
 
-                 return view('plan.route', compact('routesWithDates','dates'));
+                 return view('plan.route', compact('routesWithDates','dates','drivers'));
             }
         
 
@@ -1140,39 +1139,44 @@ class PlanningController extends Controller
      */
     public function dates(Request $request)
     {
+        //dd($request->all());
+
+        $enddates = $request->input('enddate');
+        $enddate = Carbon::parse($enddates);
+        $time = $request->time;
+        $loading = $request->loading;
+        $product = $request->product;
+        $maxloads = $request->maxloads;
 
         $route = Route::where('id', $request->route_id)->first();
         $dateString = $request->input('date'); 
         $date = Carbon::parse($dateString);
-      //  $trucks = Asset::all();
+        $drivers = Driver::all();
 
-      $dates= $dateString;
+        $dates= $dateString;
 
-        $trucks = Asset::leftJoin('plandetails', function($join) use ($dates) {
+        $trucks = Asset::with('drivers')->leftJoin('plandetails', function($join) use ($dates) {
             $join->on('assets.licenseNumber', '=', 'plandetails.truck')
                  ->where('plandetails.date', '=', $dates);
         })
         ->whereNull('plandetails.id') // Filter out those with assignments
         ->select('assets.*') // Select all columns from assets
         ->get();
-
-       // dd($trucks);
-
-        return view('plan.viewplan', compact('route','date','trucks'));
+     
+        return view('plan.viewplan', compact('route','date','trucks','drivers','enddate','time','loading','product','maxloads'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function assigndriver(string $id)
     {
-        //
+        dd($id);
     }
 
     public function filter(Request $request)
     {
-      // dd($request->all());
 
        $query = Plandetailshistory::query();
          
@@ -1261,20 +1265,46 @@ class PlanningController extends Controller
     public function setplan(Request $request)
     {
 
-        $userId = Auth::user()->id;
+      
+            $startDate = Carbon::parse($request->date);
+            $endDate = Carbon::parse($request->enddate);
+              
+            $dates = [];
 
+            if ($startDate->eq($endDate)) {
+                // If start and end dates are the same, add only one date to the array
+                $dates[] = $startDate->format('Y-m-d');
+            } else {
+                
+                $currentDate = $startDate->copy();
+                while ($currentDate->lte($endDate)) {
+                    $dates[] = $currentDate->format('Y-m-d'); // Add each date to the array
+                    $currentDate->addDay(); // Increment by one day
+                }
+            }
+
+
+
+        $userId = Auth::user()->id;
         $getroute = Route::where('id', $request->route)->first();
+
+        foreach ($dates as $date) {
+
         $createplan = Plan::create([
-            'date' => $request->date,
+            'date' => $date,
+            'enddate' => $request->enddate,
+            'product' => $request->product,
+            'maxloads' => $request->maxloads,
+            'loadingNumber' => $request->loading,
             'routeId' => $request->route,
             'route' => $getroute->from .' to '. $getroute->to ,
             'createdBy' => $userId
         ]);
 
 
-            $date = $request->date;
             $truck_ids = $request->input('truck_ids');
             $nooftrips = $request->input('nooftrips');
+            $driver = $request->input('driver');
            // $shifts = $request->input('shifts');
             $times = $request->input('times');
             $status = $request->input('status');
@@ -1292,11 +1322,12 @@ class PlanningController extends Controller
                             'plan_id' => $createplan->id,
                             'route' => $getroute->from .' to '. $getroute->to ,
                             'routeId' => $request->route,
-                            'date' => $request->date,
+                            'date' => $date,
                             'truck' =>  $truck->licenseNumber,
                             'truck_id' => $truck_ids[$key],
                             'trips'  => $nooftrips[$key], 
                             'time'  => $times[$key],
+                            'driver_id'  => $driver[$key],
                             'createdBy' => $userId
                             
                         ]),
@@ -1314,11 +1345,12 @@ class PlanningController extends Controller
                             'plandetails_id' =>  $companyrole->id,
                             'route' => $getroute->from .' to '. $getroute->to ,
                             'routeId' => $request->route,
-                            'date' => $request->date,
+                            'date' => $date,
                             'truck' =>  $truck->licenseNumber,
                             'truck_id' => $truck_ids[$key],
                             'trips'  => $nooftrips[$key],
                             'time'  => $times[$key],
+                            'driver_id'  => $driver[$key],
                             'createdBy' => $userId
                             
                         ])
@@ -1326,6 +1358,7 @@ class PlanningController extends Controller
 
                 }
 
+            }
                 
      
                 if($createplan){
@@ -1349,16 +1382,18 @@ class PlanningController extends Controller
     {
        
         $planDetails = DB::table('plandetailshistories')
-        ->select('date', 'route', DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
-        ->orderByRaw('MAX(date) DESC')
-        ->groupBy('date', 'route')
+        ->join('plans', 'plandetailshistories.plan_id', '=', 'plans.id') 
+        ->select('plandetailshistories.date', 'plandetailshistories.route', 'plans.product','plans.loadingNumber' ,DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
+        ->orderByRaw('MAX(plandetailshistories.date) DESC')
+        ->groupBy('plandetailshistories.date', 'plandetailshistories.route','plans.product','plans.loadingNumber')
         ->get();
 
         // dd( $planDetails);
             
         $trucks = DB::table('plandetailshistories')
-        ->join('assets', 'plandetailshistories.truck', '=', 'assets.licenseNumber') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetailshistories.truck', 'assets.registration', 'assets.make',  'assets.model', 'assets.licenseNumber','plandetailshistories.date', 'plandetailshistories.route', 'plandetailshistories.trips')
+        ->join('assets', 'plandetailshistories.truck', '=', 'assets.licenseNumber')
+        ->join('drivers', 'plandetailshistories.driver_id', '=', 'drivers.id')  // 'assets' table has 'registration' field matching 'truck'
+        ->select('plandetailshistories.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname',  'assets.model', 'assets.licenseNumber','plandetailshistories.date', 'plandetailshistories.route', 'plandetailshistories.trips')
         ->get();
 
      $routes = Route::all();
@@ -1372,15 +1407,17 @@ class PlanningController extends Controller
     {
        
         $planDetails = DB::table('plandetails')
-        ->where('date', '>=', now()->format('Y-m-d'))
-        ->select('date', 'route', DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
+        ->where('plandetails.date', '>=', now()->format('Y-m-d'))
+        ->join('plans', 'plandetails.plan_id', '=', 'plans.id') 
+        ->select('plandetails.date', 'plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
        // ->orderByRaw('MAX(date) DESC')
-        ->groupBy('date', 'route')
+        ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber')
         ->get();
 
         $trucks = DB::table('plandetails')
-        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck', 'assets.registration', 'assets.make',  'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
+        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
      $routes = Route::all();

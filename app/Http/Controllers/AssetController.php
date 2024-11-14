@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Userrole;
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\Assetdriver;
+use App\Models\Driver;
 use Alert;
 use Auth;
 
@@ -72,9 +74,31 @@ class AssetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function assignDrivers(request $request)
     {
-        //
+
+        $drivers = Driver::whereIn('id', $request->driver_ids)->get();       
+
+        foreach ($drivers as $driver) {
+             
+            Assetdriver::create([
+
+                'asset_id' => $request->asset,
+                'driver_id' => $driver->id,
+            ]);
+
+        }
+
+        return back()->with('success', 'Driver Assigned successfully!'); 
+    }
+
+    public function assigndriver(string $id)
+    {
+        $asset = Asset::findOrFail($id);
+        $drivers = Driver::all();
+
+        return view('assets.assigndriver', compact('asset','drivers'));
+
     }
 
     /**

@@ -11,11 +11,17 @@ class Assetdriver extends Model
 
     protected $fillable = [
 
-        'asset',
-        'driver',  
+        'asset_id',
+        'driver_id',  
         'status',
         'createdBy',
         'updatedBy',
        
     ];
+
+    public function Asset()
+    {
+        return $this->belongsTo(Asset::class);
+    }
+
 }

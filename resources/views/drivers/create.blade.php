@@ -53,28 +53,21 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Group</label>
-                                                                <input type="text" name="group"  class="form-control">
+                                                                  <label class="form-label">Date of birth</label>
+                                                                  <input type="date"  name="dob" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Date of birth</label>
-                                                                <input type="date"  name="dob" class="form-control">
+                                                            <label class="form-label">License Expiration Date</label>
+                                                            <input type="date"  name="licenseExpireDate"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                            <label class="form-label">Gender</label>
-                                                                <div class="invoice-action-currency">
-                                                                    <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="gender"  id="gender" class="form-select" >
-                                                                    <option selected="">Choose...</option>
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>                                                                                                                                                                
-                                                                   </select>  
-                                                                    </div>
-                                                                </div>                                                                                                                                                                                                                         
+                                                         
+                                                            <label class="form-label">License Number</label>
+                                                            <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">                                                                                                                                                                                                                        
                                                             </div>
                                                         </div>
 
@@ -96,23 +89,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">License Expiration Date</label>
-                                                                <input type="date"  name="licenseExpireDate"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">License Number</label>
-                                                                <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Vehicle Type</label>
-                                                                <input type="text" name="vehicleType"  class="form-control add-payment-method-input">
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                     
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('plandetails_id')->nullable();
             $table->string('name')->nullable();
             $table->string('route')->nullable();
+            $table->integer('driver_id')->nullable();
             $table->integer('routeId')->nullable();
             $table->string('date')->nullable();
             $table->string('truck')->nullable();

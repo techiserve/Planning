@@ -125,32 +125,37 @@
 
     <script>
 $(document).ready(function() {
-    // When a checkbox is checked or unchecked
-    $('.truck-checkbox').on('change', function() {
-        var truckId = $(this).val(); // Get the truck ID from the checkbox value
+    // Function to enable or disable fields based on checkbox status
+    function toggleFields(truckId, isChecked) {
+        $('#nooftrips-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#nooftrips-' + truckId).val() : '');
+        $('#shifts-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#shifts-' + truckId).val() : '');
+        $('#times-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#times-' + truckId).val() : '');
+        $('#status-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#status-' + truckId).val() : '');
+        $('#driver-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#driver-' + truckId).val() : '');
 
-        // Enable or disable the corresponding input fields based on checkbox status
-        if ($(this).is(':checked')) {
-            $('#nooftrips-' + truckId).prop('disabled', false).attr('required', 'required');
-            $('#shifts-' + truckId).prop('disabled', false).attr('required', 'required');
-            $('#times-' + truckId).prop('disabled', false).attr('required', 'required');
-            $('#status-' + truckId).prop('disabled', false).attr('required', 'required');
-
-            // Initialize flatpickr time picker on the time field
+        // Initialize flatpickr time picker only when checkbox is checked
+        if (isChecked) {
             flatpickr(document.getElementById('times-' + truckId), {
                 enableTime: true,
                 noCalendar: true,
                 dateFormat: "H:i",
-                defaultDate: "13:45", // Optional: You can set a default time
                 time_24hr: true // 24-hour format
             });
-
-        } else {
-            $('#nooftrips-' + truckId).prop('disabled', true).removeAttr('required').val('');
-            $('#shifts-' + truckId).prop('disabled', true).removeAttr('required').val('');
-            $('#times-' + truckId).prop('disabled', true).removeAttr('required').val('');
-            $('#status-' + truckId).prop('disabled', true).removeAttr('required').val('');
         }
+    }
+
+    // When a single checkbox is checked or unchecked
+    $('.truck-checkbox').on('change', function() {
+        var truckId = $(this).val();
+        toggleFields(truckId, $(this).is(':checked'));
+    });
+
+    // Select All functionality
+    $('#contact-check-all').on('change', function() {
+        var isChecked = $(this).is(':checked');
+        
+        // Check or uncheck all individual checkboxes
+        $('.truck-checkbox').prop('checked', isChecked).trigger('change');
     });
 
     // Initialize flatpickr for all time inputs by default (if needed)
@@ -163,8 +168,8 @@ $(document).ready(function() {
         });
     });
 });
-
 </script>
+
 
     <script type="text/javascript">
                                               function deleteConfirmation(id) {

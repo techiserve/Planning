@@ -47,7 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/assets/index', [AssetController::class, 'index'])->name('assets.index');
     Route::get('/assets/create', [AssetController::class, 'create'])->name('assets.create');
     Route::post('/assets/store', [AssetController::class, 'store'])->name('assets.store');
+    Route::post('/assets/assignDrivers', [AssetController::class, 'assignDrivers'])->name('assets.assignDrivers');
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
+    Route::get('/assets/assign/{id}', [AssetController::class, 'assigndriver'])->name('assets.assigndriver');
     Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
 
 

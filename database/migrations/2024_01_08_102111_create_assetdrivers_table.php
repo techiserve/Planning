@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('assetdrivers', function (Blueprint $table) {
             $table->id();
-            $table->integer('asset')->nullable();       
-            $table->integer('driver')->nullable();
+            $table->integer('asset_id')->nullable();       
+            $table->integer('driver_id')->nullable();
             $table->integer('status')->nullable();
             $table->string('createdBy')->nullable();
             $table->string('updatedBy')->nullable();
