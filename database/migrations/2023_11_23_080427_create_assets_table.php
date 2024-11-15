@@ -42,6 +42,15 @@ return new class extends Migration
             $table->string('fueltype')->nullable();
             $table->string('resourcePoolStatus')->nullable();
             $table->string('routeresourcePoolStatus')->nullable();
+
+            $table->string('assetnumber1')->nullable();
+            $table->string('regNumber1')->nullable();
+            $table->string('regexpdate1')->nullable();
+
+            $table->string('assetnumber2')->nullable();
+            $table->string('regNumber2')->nullable();
+            $table->string('regexpdate2')->nullable();
+
             $table->date('registrationExpireDate')->nullable();
             $table->string('updatedBy')->nullable();
             $table->string('createdBy');

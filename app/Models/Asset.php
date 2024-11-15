@@ -35,6 +35,15 @@ class Asset extends Model
         'truckType',
         'trailerType',
         'isAssigned',
+
+        'assetnumber1',
+        'regNumber1',
+        'regexpdate1',
+
+        'assetnumber2',
+        'regNumber2',
+        'regexpdate2',
+
         'resourcePoolStatus',
         'routeresourcePoolStatus',
         'registrationExpireDate',

@@ -59,6 +59,19 @@ class AssetController extends Controller
         $userrole->mileage = $request->mileage;
         $userrole->status = 1;
         $userrole->fueltype = $request->fueltype;
+
+        $userrole->assetnumber1 = $request->assetnumber1;
+        $userrole->regNumber1 = $request->regNumber1;
+        $userrole->regexpdate1 = $request->regexpdate1;
+
+        $userrole->assetnumber2 = $request->assetnumber2;
+        $userrole->regNumber2 = $request->regNumber2;
+        $userrole->regexpdate2 = $request->regexpdate2;
+
+        $userrole->mileage = $request->mileage;
+        $userrole->status = 1;
+        $userrole->fueltype = $request->fueltype;
+
         $userrole->registrationExpireDate = $request->registrationExpireDate;
         $userrole->CreatedBy = $user->name;
 
