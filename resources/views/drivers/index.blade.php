@@ -32,10 +32,9 @@
                             <th class="checkbox-column"> Record no. </th>
                             <th>Name</th>
                             <th>Surname</th>
-                            <th>Group</th>
                             <th>Route Type</th>
                             <th>License Number</th>                    
-                            <th>Vehicle Type</th>
+                       
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -48,12 +47,12 @@
                             <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->name }}</span></a></td>
                          
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->surname }}</p></span></td>
-                            <td><span class="inv-email"> {{ $asset->group }}</span></td>
+                            
                             <td> {{ $asset->routeType }}</td>                                           
                             <td>
                             <span class="inv-amount">{{ $asset->licenseNumber }}</span>
                            </td>  
-                            <td><span class="inv-date">{{ $asset->vehicleType }}</span></td>
+                 
                             <td>@if ($asset->status == 1)
                            <span class="badge badge-light-success inv-status">Available</span> 
                             @elseif ($asset->status == 2)
