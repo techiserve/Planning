@@ -158,7 +158,9 @@
                                             <div class="user-phone">
                                                 <h4 style="margin-left: 3px;">Trips</h4>
                                             </div>
-                                           
+                                            <div class="new-column">
+                                            <h4 style="margin-left: 3px;">Driver</h4>
+                                            </div>
                                             <div class="user-phone">
                                                 <h4 style="margin-left: 3px;">Route</h4>
                                             </div>
@@ -174,6 +176,9 @@
                                             </div>
                                             <div class="user-location">
                                                 <h4 style="margin-left: -150px;">New Route</h4>
+                                            </div>
+                                            <div class="user-location">
+                                                <h4 style="margin-left: -150px;">New Driver</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +207,11 @@
                                                 <!-- <input class="form-control" name="nooftrips[]" type="text" value="{{$assignment->trips}}"  id="nooftrips-{{ $assignment->id }}" disabled> -->
                                                 <p class="usr-email-addr" >{{$assignment->trips}}</p>
                                             </div> 
-                                        
+                                            <div class="user-phone">
+                                                <p class="info-title">Phone: </p>
+                                                <!-- <input class="form-control" name="nooftrips[]" type="text" value="{{$assignment->trips}}"  id="nooftrips-{{ $assignment->id }}" disabled> -->
+                                                <p class="usr-email-addr" >{{$assignment->trips}}</p>
+                                            </div> 
 
                                             <div class="user-phone">
                                                 <p class="info-title">Phone: </p>
@@ -236,6 +245,12 @@
                                                                     @endforeach                                                                                                                            
                                                                    </select>  
                                             </div>
+
+                                            <div class="user-phone">
+                                                <p class="info-title">Phone: </p>
+                                                <!-- <input class="form-control" name="nooftrips[]" type="text" value="{{$assignment->trips}}"  id="nooftrips-{{ $assignment->id }}" disabled> -->
+                                                <p class="usr-email-addr" >{{$assignment->trips}}</p>
+                                            </div> 
                                         </div>
                                     </div>  
                                     @endforeach                                    
