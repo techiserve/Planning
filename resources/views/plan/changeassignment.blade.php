@@ -4,7 +4,20 @@
 .searchable-items.list {
     display: flex;
     flex-direction: column;
+    max-height: 600px; /* Adjust the height as needed */
+    overflow-y: auto;
+    border: 1px solid #ddd; /* Optional: add a border around the scrollable area */
+    border-radius: 10px;
 }
+
+.items-header-section {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Optional: background color to match page */
+    z-index: 10; /* Ensure header stays above content */
+    border-bottom: 2px solid #ddd; /* Optional: add a border under the header */
+}
+
 
 /* Align the header and data rows uniformly */
 .items-header-section, .items {

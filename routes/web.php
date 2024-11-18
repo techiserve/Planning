@@ -116,6 +116,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/plan/setplan', [PlanningController::class, 'setplan'])->name('plan.setplan');
     Route::get('/plan/changeassignment', [PlanningController::class, 'changeassignment'])->name('plan.changeassignment');
     Route::get('/plan/activesummary', [PlanningController::class, 'activesummary'])->name('plan.activesummary');
+    Route::get('/plan/todaysummary', [PlanningController::class, 'todaysummary'])->name('plan.todaysummary');
     Route::get('/plan/summary', [PlanningController::class, 'summary'])->name('plan.summary');
     Route::post('/summary/filter', [PlanningController::class, 'filter'])->name('summary.filter');
     Route::post('/activesummary/filter', [PlanningController::class, 'activesummaryfilter'])->name('activesummary.filter');

@@ -1427,6 +1427,30 @@ class PlanningController extends Controller
 
 
 
+    public function todaysummary()
+    {
+       
+        $planDetails = DB::table('plandetails')
+        ->where('plandetails.date', '=', now()->format('Y-m-d'))
+        ->join('plans', 'plandetails.plan_id', '=', 'plans.id') 
+        ->select('plandetails.date', 'plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
+       // ->orderByRaw('MAX(date) DESC')
+        ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber')
+        ->get();
+
+        $trucks = DB::table('plandetails')
+        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
+        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->get();
+
+     $routes = Route::all();
+         
+        return view('plan.todaysummary', compact('planDetails','trucks','routes'));
+    }
+
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -24,7 +24,7 @@
     
                     
                     <div class="row g-3">
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
                     <select class="form-select" id="inlineFormSelectPref" name="route">
                         <option value="" selected>Choose Route</option>
@@ -42,7 +42,8 @@
                     </div>
                     <div class="col-sm">
                             <button type="submit" class="btn btn-success btn-lg">Filter</button>
-                            <a href="/plan/activesummary" class="btn btn-primary btn-lg">View Active Summary</a>
+                            <a href="/plan/activesummary" class="btn btn-primary btn-lg"> Active Summary</a>
+                            <a href="/plan/todaysummary" class="btn btn-info btn-lg"> Today's Plan</a>
                         </div>
                    </div>
 
