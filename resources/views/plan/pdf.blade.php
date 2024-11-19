@@ -82,9 +82,7 @@
                 <th class="tall-th" colspan="1">VALID FROM</th>
                 <th  class="tall-th" colspan="2">{{$plan->date}}</th>
                 <th class="tall-th" colspan="2">VALID TO/UNTIL</th>
-                <th class="tall-th" >{{$plan->enddate}}</th>
-              
-             
+                <th class="tall-th" >{{$plan->enddate}}</th>                 
             </tr>
         <thead>
             <tr>
