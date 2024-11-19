@@ -94,11 +94,12 @@
                 <th>TRAILER 1</th>
                 <th>TRAILER 2</th>
                 <th>DRIVER NAME</th>
+                <th>DRIVER CHECK CODE</th>
                 <th>DRIVER ID</th>
                 <th>MAX LOADS</th>
                 <th>PRODUCT</th>
                 <th>LOADING NUMBER</th>
-                <th>LOADING NUMBER tehhh</th>
+            
             </tr>
         </thead>
         <tbody>
@@ -110,8 +111,9 @@
                 <td>{{$info->regNumber1}}</td>
                 <td>{{$info->regNumber2}}</td>
                 <td>{{$info->name}}{{$info->surname}}</td>
-                <td>{{$info->licenseNumber}}</td>
                 <td>N/A</td>
+                <td>{{$info->licenseNumber}}</td>
+                
                 <td>{{$plan->maxloads}}</td>
                 <td>{{$plan->product}}</td>
                 <td>{{$plan->loadingNumber}}</td>
