@@ -112,6 +112,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/planning/showallcontractplan', [PlanningController::class, 'showallcontractplan'])->name('assignments.showallcontractplan');
     Route::get('/planning/showallrouteplan', [PlanningController::class, 'showallrouteplan'])->name('assignments.showallrouteplan');
     Route::get('/plan/route', [PlanningController::class, 'allroutes'])->name('plan.route');
+    Route::get('/plan/downloadpdf/{id}', [PlanningController::class, 'downloadpdf'])->name('plan.downloadpdf');
     Route::post('/plan/dates', [PlanningController::class, 'dates'])->name('plan.dates');
     Route::post('/plan/setplan', [PlanningController::class, 'setplan'])->name('plan.setplan');
     Route::get('/plan/changeassignment', [PlanningController::class, 'changeassignment'])->name('plan.changeassignment');

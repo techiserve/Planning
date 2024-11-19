@@ -24,6 +24,7 @@ use App\Models\Plandetails;
 use App\Models\Plandetailshistory;
 use App\Models\Plancontract;
 use App\Models\Assetdriver;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Escalationformula;
 use App\Models\Route;
 use Carbon\Carbon;
@@ -1288,10 +1289,8 @@ class PlanningController extends Controller
         $userId = Auth::user()->id;
         $getroute = Route::where('id', $request->route)->first();
 
-        foreach ($dates as $date) {
-
         $createplan = Plan::create([
-            'date' => $date,
+            'date' => $request->date,
             'enddate' => $request->enddate,
             'product' => $request->product,
             'maxloads' => $request->maxloads,
@@ -1302,6 +1301,8 @@ class PlanningController extends Controller
         ]);
 
 
+        foreach ($dates as $date) {
+
             $truck_ids = $request->input('truck_ids');
             $nooftrips = $request->input('nooftrips');
             $driver = $request->input('driver');
@@ -1309,9 +1310,7 @@ class PlanningController extends Controller
             $times = $request->input('times');
             $status = $request->input('status');
 
-
                 foreach($truck_ids as $key => $n ) {
-
 
                     $truck = Asset::where('id', $n)->first();
 
@@ -1409,9 +1408,9 @@ class PlanningController extends Controller
         $planDetails = DB::table('plandetails')
         ->where('plandetails.date', '>=', now()->format('Y-m-d'))
         ->join('plans', 'plandetails.plan_id', '=', 'plans.id') 
-        ->select('plandetails.date', 'plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
+        ->select('plandetails.date', 'plandetails.plan_id', 'plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
        // ->orderByRaw('MAX(date) DESC')
-        ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber')
+        ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber','plandetails.plan_id')
         ->get();
 
         $trucks = DB::table('plandetails')
@@ -1450,6 +1449,34 @@ class PlanningController extends Controller
     }
 
 
+
+    public function downloadpdf($id)
+    {
+        // Fetch data from the database
+        //dd($id);
+        $plan = Plan::where('id',$id)->first();
+        $route = Route::where('id', $plan->routeId)->first();
+        $user = User::where('id',$plan->createdBy)->first();
+
+       // $data = Plandetails::where('plan_id',$id)->groupBy('truck')->get();
+
+        $data = DB::table('plandetails')
+        ->where('plan_id',$id)
+        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
+        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        ->select('plandetails.truck', 'assets.registration','assets.regNumber1','assets.regNumber2', 'assets.make', 'drivers.name', 'drivers.licenseNumber','drivers.surname', 'assets.model','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->groupby('plandetails.truck')
+        ->get();
+
+       // dd($trucks);
+
+        $pdf = PDF::loadView('plan.pdf', ['data' => $data,'plan' => $plan,'route' => $route,'user' => $user])
+                ->setPaper('a4', 'landscape');
+
+            //  return view('plan.pdf');
+        // Download PDF
+        return $pdf->download('data.pdf');
+    }
 
 
     /**

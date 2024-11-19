@@ -77,6 +77,7 @@
                             <td><span class="inv-email"> {{ $details->total_trips }}</span></td>
                             <td><span class="in-status">{{ $details->total_trucks }}</span></td>                                                                                                 
                             <td>
+                            <a href="/plan/downloadpdf/{{$details->plan_id}}" class="btn btn-success btn-md">Download Plan</a>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#truckModal-{{ $loop->index }}">
                              View Trucks
                             </button>   
