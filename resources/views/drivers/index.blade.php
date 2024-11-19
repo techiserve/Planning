@@ -32,9 +32,8 @@
                             <th class="checkbox-column"> Record no. </th>
                             <th>Name</th>
                             <th>Surname</th>
-                            <th>Route Type</th>
-                            <th>License Number</th>                    
-                       
+                        
+                            <th>ID Number</th>                    
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -48,7 +47,7 @@
                          
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->surname }}</p></span></td>
                             
-                            <td> {{ $asset->routeType }}</td>                                           
+                                                                  
                             <td>
                             <span class="inv-amount">{{ $asset->licenseNumber }}</span>
                            </td>  
@@ -63,7 +62,7 @@
                              </td>   
                             <td>
                                 <a class="badge badge-light-primary text-start me-2 action-edit" href="/drivers/edit/{{$asset->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
-                                <a class="badge badge-light-danger text-start action-delete" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
+                                <a class="badge badge-light-danger text-start action-delete" href="/drivers/delete/{{$asset->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
                             </td>
                         </tr>
                         @endforeach

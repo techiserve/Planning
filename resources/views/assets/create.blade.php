@@ -58,8 +58,13 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Model</label>
-                                                                <input type="text" name="model"  class="form-control">
+                                                                <label class="form-label">Asset Type</label>
+                                                    
+                                                                <select name="model" class="form-select"> 
+                                                                <option value="" disabled selected>Select Type</option>                                                  
+                                                                    <option value="Interlink">Interlink</option> 
+                                                                    <option value="PBS">PBS</option> 
+                                                                </select> 
                                                             </div>
                                                         </div>
                                                     

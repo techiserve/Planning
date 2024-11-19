@@ -153,8 +153,8 @@
                     <div class="col-md-6">
                         <div class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
-                                <div class="fw-bold">Max Loads:</div>
-                                <p class="sub-title mb-0">{{ $maxloads }}</p>
+                                <div class="fw-bold">Client Name:</div>
+                                <p class="sub-title mb-0">{{ $clientname }}</p>
                             </div>
                         </div>
                     </div>
@@ -263,7 +263,7 @@
                                             </div>
                                             <div class="user-phone">
                                                 <p class="info-title">Phone: </p>
-                                                <input class="form-control" name="nooftrips[]" type="number"  id="nooftrips-{{ $truck->id }}" disabled>
+                                                <input class="form-control" name="nooftrips[]" type="number"  id="nooftrips-{{ $truck->id }}" value="{{ $maxloads }}" disabled>
                                             </div>
                                            
                                             <div class="action-btn">
@@ -304,6 +304,7 @@
                                             <input class="form-control" name="product" value="{{$product }}" type="hidden">
                                             <input class="form-control" name="loading" value="{{$loading}}" type="hidden">
                                             <input class="form-control" name="maxloads" value="{{$maxloads}}" type="hidden">
+                                            <input class="form-control" name="clientname" value="{{$clientname}}" type="hidden">
                                             <input class="form-control" name="route" value="{{$route->id }}" type="hidden">
                                             </div>
                                     </div>  

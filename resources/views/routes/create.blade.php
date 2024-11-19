@@ -10,8 +10,8 @@
                     <div class="page-meta">
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Users</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Create New Contract</li>
+                                <li class="breadcrumb-item"><a href="#">Routes</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Create New Route</li>
                             </ol>
                         </nav>
                     </div>
@@ -37,7 +37,7 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
-                                                    <h6 class="">Add Contract Details</h6>                              
+                                                    <h6 class="">Add Route Details</h6>                              
     
                                                     <div class="row mt-4">
                                                         <div class="col-md-4">

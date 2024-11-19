@@ -82,16 +82,16 @@ class RouteController extends Controller
      */
     public function edit(string $id)
     {
-        $asset = Asset::where('id', $id)->first();
-      //  dd($asset);
+        $contract = Route::where('id', $id)->first();
+    // dd($contract);
 
-        return view('assets.edit', compact('asset'));
+        return view('routes.edit', compact('contract'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateasset(Request $request, string $id)
     {
       //      dd($request->payloadCapacity);
 
@@ -131,11 +131,42 @@ class RouteController extends Controller
 
     }
 
+
+    public function update(Request $request, string $id)
+    {
+      //      dd($request->payloadCapacity);
+
+        $routeupdate = Route::where('id',$id)->update([
+
+            'from'               =>$request->from, 
+            'to'       =>$request->to, 
+            'Type'    =>$request->Type, 
+            'activity'           =>$request->activity, 
+            'distance'           =>$request->distance, 
+            'rate'              =>$request->rate,         
+            'updatedBy'   =>Auth::user()->id,               
+
+        ]);
+
+        if($routeupdate){
+
+            return back()->with('success', 'Route updated successfully!'); 
+        }
+
+        return back()->with('error', 'Failed to update Route!'); 
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $delete = Route::where('id', $id)->delete();
+
+        if($delete){
+  
+            return back()->with('success', 'Route deleted successfully!'); 
+        }
     }
 }

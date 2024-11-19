@@ -1093,11 +1093,16 @@ class PlanningController extends Controller
 
                     $route = Route::where('id', $routes[$key])->first();
                     $currentplan = Plandetails::where('id',  $plan_ids[$key])->first();
+                    $prevplan = Plandetails::where('date',  $currentplan->date)->where('routeId', $routes[$key])->first();
+
+                    //dd($currentplan,$prevplan,$currentplan->date,$routes[$key],$route);
 
                     $arrData[] = array(
 
-                        $change = Plandetails::where('id',  $plan_ids[$key])->update([
+                        $change = Plandetails::where('id',  $plan_ids[$key])->update([  
 
+
+                            'plan_id'  => $prevplan->plan_id,
                             'route' => $route->from .' to '. $route->to ,
                             'routeId' =>  $routes[$key],
                             //'trips'  => $nooftrips[$key],
@@ -1148,6 +1153,7 @@ class PlanningController extends Controller
         $loading = $request->loading;
         $product = $request->product;
         $maxloads = $request->maxloads;
+        $clientname = $request->clientname;
 
         $route = Route::where('id', $request->route_id)->first();
         $dateString = $request->input('date'); 
@@ -1164,7 +1170,7 @@ class PlanningController extends Controller
         ->select('assets.*') // Select all columns from assets
         ->get();
      
-        return view('plan.viewplan', compact('route','date','trucks','drivers','enddate','time','loading','product','maxloads'));
+        return view('plan.viewplan', compact('route','date','trucks','drivers','enddate','time','loading','product','maxloads','clientname'));
 
     }
 
@@ -1205,9 +1211,10 @@ class PlanningController extends Controller
         ->get();
 
         
-        $trucks = DB::table('plandetailshistories')
-        ->join('assets', 'plandetailshistories.truck', '=', 'assets.registration') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetailshistories.truck', 'assets.registration', 'assets.make',  'assets.model', 'assets.licenseNumber','plandetailshistories.date', 'plandetailshistories.route', 'plandetailshistories.trips')
+        $trucks = DB::table('plandetails')
+        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
+        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
         $routes = Route::all();
@@ -1250,8 +1257,9 @@ class PlanningController extends Controller
 
         
         $trucks = DB::table('plandetails')
-        ->join('assets', 'plandetails.truck', '=', 'assets.registration') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck', 'assets.registration', 'assets.make',  'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
+        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
         $routes = Route::all();
@@ -1291,6 +1299,7 @@ class PlanningController extends Controller
 
         $createplan = Plan::create([
             'date' => $request->date,
+            'name' => $request->clientname,
             'enddate' => $request->enddate,
             'product' => $request->product,
             'maxloads' => $request->maxloads,
@@ -1432,9 +1441,9 @@ class PlanningController extends Controller
         $planDetails = DB::table('plandetails')
         ->where('plandetails.date', '=', now()->format('Y-m-d'))
         ->join('plans', 'plandetails.plan_id', '=', 'plans.id') 
-        ->select('plandetails.date', 'plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
+        ->select('plandetails.date', 'plandetails.route','plandetails.plan_id', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
        // ->orderByRaw('MAX(date) DESC')
-        ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber')
+        ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber','plandetails.plan_id')
         ->get();
 
         $trucks = DB::table('plandetails')

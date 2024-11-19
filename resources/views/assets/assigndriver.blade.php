@@ -68,17 +68,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($drivers as $driver)
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" name="driver_ids[]" value="{{ $driver->id }}" class="driver-checkbox">
-                                </td>
-                                <td>{{ $driver->name }}</td>
-                                <td>{{ $driver->surname }}</td>
-                                <td>{{ $driver->licenseNumber }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+    @foreach ($drivers as $driver)
+        <tr>
+            <td style="text-align: center;">
+                @php
+                    $isChecked = $assigned->contains(function ($selected) use ($driver) {
+                        return $driver->id == $selected->driver_id;
+                    });
+                @endphp
+                <input type="checkbox" name="driver_ids[]" value="{{ $driver->id }}" class="driver-checkbox" {{ $isChecked ? 'checked' : '' }}>
+            </td>
+            <td>{{ $driver->name }}</td>
+            <td>{{ $driver->surname }}</td>
+            <td>{{ $driver->licenseNumber }}</td>
+        </tr>
+    @endforeach
+</tbody>
+
                 </table>
                 <input type="hidden" name="asset" value="{{ $asset->id }}" class="driver-checkbox">
                 <button type="submit" class="btn btn-success mt-3">Assign Selected Drivers</button>

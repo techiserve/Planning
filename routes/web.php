@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::get('/assets/assign/{id}', [AssetController::class, 'assigndriver'])->name('assets.assigndriver');
     Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
+    Route::get('/assets/delete/{id}', [AssetController::class, 'destroy'])->name('assets.delete');
 
 
         //Routes
@@ -59,6 +60,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/routes/create', [RouteController::class, 'create'])->name('routes.create');
         Route::post('/routes/store', [RouteController::class, 'store'])->name('routes.store');
         Route::get('/routes/edit/{id}', [RouteController::class, 'edit'])->name('routes.edit');
+        Route::get('/routes/delete/{id}', [RouteController::class, 'destroy'])->name('routes.delete');
         Route::put('/routes/update/{id}', [RouteController::class, 'update'])->name('routes.update');
 
     //Contracts
@@ -87,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/drivers/index', [DriverController::class, 'index'])->name('drivers.index');
     Route::post('/drivers/store', [DriverController::class, 'store'])->name('drivers.store');
     Route::get('/drivers/edit/{id}', [DriverController::class, 'edit'])->name('drivers.edit');
+    Route::get('/drivers/delete/{id}', [DriverController::class, 'destroy'])->name('drivers.delete');
     Route::put('/drivers/update/{id}', [DriverController::class, 'update'])->name('drivers.update');
 
     //Assignments 

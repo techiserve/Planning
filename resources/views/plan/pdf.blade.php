@@ -29,19 +29,19 @@
             text-align: center;
         }
         .table th {
-            background-color: #f2f2f2;
+            background-color: #d4d4d4;
             border: 1px solid black;
             font-size: 10px; /* Smaller font for headers */
         }
         .tall-th {
-            height: 40px; /* Reduced height for tall <th> */
+            height: 30px; /* Reduced height for tall <th> */
         }
         .th-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 8%; /* Ensure it spans the full height of the <th> */
+            height: 6%; /* Ensure it spans the full height of the <th> */
             text-align: center;
         }
         .th-top, .th-bottom {
@@ -66,7 +66,7 @@
     <table class="table">
         <thead>
         <tr>
-        <th colspan="11">CLIENT LOADING SCHEDULE</th>
+        <th colspan="11">CLIENT LOADING SCHEDULE  FOR ROUTE {{$route->from}} TO {{$route->to}}</th>
             </tr>
             <tr>
                 <th class="tall-th" colspan="2">  <div class="th-content">
@@ -75,14 +75,14 @@
                     <div class="th-bottom">ORIGINATOR NAME:</div>
                 </div></th>
                 <th class="tall-th" style="background-colo:white;" colspan="3">  <div class="th-content">
-                    <div class="th-top">{{$route->from}} </div>
+                    <div class="th-top">{{$plan->clientname}} </div>
                     <hr class="divider">
                     <div class="th-bottom">{{$user->name}}</div>
                 </div></th>
                 <th class="tall-th" colspan="1">VALID FROM</th>
-                <th  class="tall-th" colspan="2">{{$plan->date}}</th>
+                <th  class="tall-th" colspan="1">{{$plan->date}}</th>
                 <th class="tall-th" colspan="2">VALID TO/UNTIL</th>
-                <th class="tall-th" >{{$plan->enddate}}</th>                 
+                <th class="tall-th" colspan="2" >{{$plan->enddate}}</th>                 
             </tr>
         <thead>
             <tr>

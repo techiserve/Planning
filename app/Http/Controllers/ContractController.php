@@ -336,9 +336,9 @@ class ContractController extends Controller
 
         if($userrole){
 
-            return redirect()->route('contracts.parameters')->with('success', 'Route created successfully!');
+            return  back()->with('success', 'Route created successfully!');
         }
-          return redirect()->route('contracts.parameters')->with('error', 'Failed to create Route!');
+          return  back()->with('error', 'Failed to create Route!');
        
     }
 

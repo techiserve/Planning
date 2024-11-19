@@ -90,7 +90,13 @@ class AssetController extends Controller
     public function assignDrivers(request $request)
     {
 
-        $drivers = Driver::whereIn('id', $request->driver_ids)->get();       
+       // dd($request->all());
+
+        $drivers = Driver::whereIn('id', $request->driver_ids)->get();     
+        
+        $removeEverything = Assetdriver::where('asset_id', $request->asset)->delete();
+
+        if($drivers){
 
         foreach ($drivers as $driver) {
              
@@ -102,6 +108,8 @@ class AssetController extends Controller
 
         }
 
+      }
+
         return back()->with('success', 'Driver Assigned successfully!'); 
     }
 
@@ -109,8 +117,9 @@ class AssetController extends Controller
     {
         $asset = Asset::findOrFail($id);
         $drivers = Driver::all();
+       $assigned = Assetdriver::where('asset_id',$id)->get();
 
-        return view('assets.assigndriver', compact('asset','drivers'));
+        return view('assets.assigndriver', compact('asset','drivers','assigned'));
 
     }
 
@@ -150,9 +159,14 @@ class AssetController extends Controller
             'trailerType'         =>$request->trailerType,
             'model'               =>$request->model,
             'registrationYear'    =>$request->registrationYear,
-            'engineCapacity'    =>$request->engineCapacity,
-            'expectedFuelConsumption'    =>$request->expectedFuelConsumption,
-            'gearType'    =>$request->gearType,
+
+            'assetnumber1'    =>$request->asset1,
+            'regNumber1'    =>$request->reg1,
+            'regexpdate1'    =>$request->exp1,
+
+            'assetnumber2'    =>$request->asset2,
+            'regNumber2'    =>$request->reg2,
+            'regexpdate2'    =>$request->exp2,
 
             'registrationExpireDate'    =>$request->registrationExpireDate, 
             'updatedBy'   =>Auth::user()->name,               
@@ -173,6 +187,11 @@ class AssetController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delete = Asset::where('id', $id)->delete();
+
+        if($delete){
+  
+            return back()->with('success', 'Asset deleted successfully!'); 
+        }
     }
 }

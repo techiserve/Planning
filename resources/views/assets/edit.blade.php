@@ -79,16 +79,10 @@
                                                                 <div class="form-group row">
                                                                     <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Asset Type</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="assetType" id="company-address" placeholder="" value="{{$asset->assetType}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="assetType" id="company-address" placeholder="" value="{{$asset->model}}">
                                                                     </div>
                                                                 </div>
     
-                                                                <div class="form-group row">
-                                                                    <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Vin Number</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="vinNumber" id="company-phone" placeholder="" value="{{$asset->vinNumber}}">
-                                                                    </div>
-                                                                </div>
                                                                     
                                                                 
                                                                 <div class="form-group row">
@@ -118,32 +112,19 @@
                                                             <div class="invoice-address-client-fields">
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Model</label>
+                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Reg Number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="model" id="client-name" placeholder="" value="{{$asset->model}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="model" id="client-name" placeholder="" value="{{$asset->registration}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm"> Weight</label>
+                                                                    <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm"> License Exp Date</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="weight" id="client-email" placeholder="" value="{{$asset->weight}}">
+                                                                        <input type="date" class="form-control form-control-sm" name="weight" id="client-email" placeholder="" value="{{$asset->registrationExpireDate}}">
                                                                     </div>
                                                                 </div>
-    
-                                                                <div class="form-group row">
-                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm"> Year</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="registrationYear" id="client-address" placeholder="" value="{{$asset->registrationYear}}">
-                                                                    </div>
-                                                                </div>
-    
-                                                                <div class="form-group row">
-                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">License Number</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-phone" placeholder="" value="{{$asset->registration}}">
-                                                                    </div>
-                                                                </div>
+      
                                                                 <div class="form-group row">
                                                                     <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Status Reason</label>
                                                                     <div class="col-sm-9">
@@ -168,21 +149,21 @@
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="number">Asset Number</label>
-                                                                <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="" value="{{$asset->assetnumber1}}">
+                                                                <input type="text" class="form-control form-control-sm" name="asset1" id="number" placeholder="" value="{{$asset->assetnumber1}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="date">Registration Number </label>
-                                                                <input type="text" class="form-control form-control-sm"  name="fueltype" id="date" placeholder="" value="{{$asset->regNumber2}}">
+                                                                <input type="text" class="form-control form-control-sm"  name="reg1" id="date" placeholder="" value="{{$asset->regNumber1}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3">
                                                             <div class="form-group mb-4">
                                                                 <label for="due">Registration Expiration Date</label>
-                                                                <input type="date" class="form-control form-control-sm"  name="registrationExpireDate" id="due" placeholder="None" value="{{$asset->regexpdate1}}">
+                                                                <input type="date" class="form-control form-control-sm"  name="exp1" id="due" placeholder="None" value="{{$asset->regexpdate1}}">
                                                             </div>       
                                                         </div> 
                                                     </div>  
@@ -192,21 +173,21 @@
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="number">Asset Number</label>
-                                                                <input type="text" class="form-control form-control-sm" name="engineCapacity" id="number"  value="{{$asset->assetnumber2}}">
+                                                                <input type="text" class="form-control form-control-sm" name="asset2" id="number"  value="{{$asset->assetnumber2}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="date">Registration Number </label>
-                                                                <input type="text" class="form-control form-control-sm"  name="expectedFuelConsumption" id="date"  value="{{$asset->regNumber2}}">
+                                                                <input type="text" class="form-control form-control-sm"  name="reg2" id="date"  value="{{$asset->regNumber2}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3">
                                                             <div class="form-group mb-4">
                                                                 <label for="due">Registration Expiration Date</label>
-                                                                <input type="date" class="form-control form-control-sm"  name="gearType" id="due" value="{{$asset->regexpdate2 }}">
+                                                                <input type="date" class="form-control form-control-sm"  name="exp2" id="due" value="{{$asset->regexpdate2 }}">
                                                             </div>       
                                                         </div> 
                                                     </div>  

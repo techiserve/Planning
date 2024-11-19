@@ -77,6 +77,9 @@
                 <form id="dateSelectionForm" action="{{ route('plan.dates') }}" method="POST">
                     @csrf
                     <input type="hidden" name="route_id" id="route-id">
+                    <label for="product" class="mt-3">Client Name:</label>
+                    <input type="text" name="clientname" id="clientname" class="form-control">
+
                     <label for="date">Choose Start Date:</label>
                     <select name="date" id="date" class="form-control">
                         <!-- This will be dynamically populated by JS -->
@@ -88,7 +91,7 @@
                     </select>
                   
                      <!-- Time Field -->
-                    <label for="time" class="mt-3">Choose Time:</label>
+                    <label for="time" class="mt-3">Choose Start Time:</label>
                     <input type="time" name="time" id="time" class="form-control">
 
                     <label for="product" class="mt-3">Loading Number:</label>

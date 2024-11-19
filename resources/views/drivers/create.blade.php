@@ -66,24 +66,15 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                          
-                                                            <label class="form-label">License Number</label>
+                                                            <label class="form-label">ID Number</label>
                                                             <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">                                                                                                                                                                                                                        
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Route Type</label>
-                                                                <div class="invoice-action-currency">
-                                                                    <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="routeType" class="form-select" >
-                                                                   <option selected="">Choose...</option>
-                                                                    <option value="short Haul">Short Haul</option>
-                                                                    <option value="Medium Haul">Medium Haul</option>
-                                                                    <option value="Long Haul">Long Haul</option>
-                                                                    <option value="All">All</option>
-                                                                                                                                                                     
-                                                                   </select>  
+                                                             
+                                                                 
                                                                     </div>
                                                                 </div>
                                                             </div>

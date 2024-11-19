@@ -76,19 +76,7 @@
                                                                     </div>
                                                                 </div>
     
-                                                                <div class="form-group row">
-                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Group</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="group" id="company-address" placeholder="" value="{{$driver->group}}">
-                                                                    </div>
-                                                                </div>
-    
-                                                                <div class="form-group row">
-                                                                    <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Gender</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="gender" id="company-phone" placeholder="" value="{{$driver->gender}}">
-                                                                    </div>
-                                                                </div>
+                                
                                                                     
                                                                 
                                                                 <div class="form-group row">
@@ -118,32 +106,15 @@
                                                             <div class="invoice-address-client-fields">
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Route Type</label>
+                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">ID Number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="routeType" id="client-name" placeholder="" value="{{$driver->routeType}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-name" placeholder="" value="{{$driver->licenseNumber}}">
                                                                     </div>
                                                                 </div>
     
-                                                                <div class="form-group row">
-                                                                    <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm">License Number</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-email" placeholder="" value="{{$driver->licenseNumber}}">
-                                                                    </div>
-                                                                </div>
+                                                               
     
-                                                                <div class="form-group row">
-                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm"> Vehicle Type</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="vehicleType" id="client-address" placeholder="" value="{{$driver->vehicleType}}">
-                                                                    </div>
-                                                                </div>
-    
-                                                                <div class="form-group row">
-                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">License Expiration</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="licenseExpireDate" id="client-phone" placeholder="" value="{{$driver->licenseExpireDate}}">
-                                                                    </div>
-                                                                </div>
+                                                               
                                                                 <div class="form-group row">
                                                                     <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Status Reason</label>
                                                                     <div class="col-sm-9">
@@ -235,7 +206,7 @@
                                                 <div class="row">
                                             
                                                     <div class="col-xl-12 col-md-4">
-                                                        <button type="submit" class="btn btn-success btn-download">Update driver Record</button>
+                                                        <button type="submit" class="btn btn-success btn-download">Update Driver Record</button>
                                                     </div>
                                                     </form>
                                                 </div>

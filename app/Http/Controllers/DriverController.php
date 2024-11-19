@@ -103,10 +103,10 @@ class DriverController extends Controller
 
         if($driverUpdate){
 
-            return back()->with('success', 'Asset updated successfully!'); 
+            return back()->with('success', 'Driver updated successfully!'); 
         }
 
-        return back()->with('error', 'Failed to update Asset!'); 
+        return back()->with('error', 'Failed to update Driver!'); 
     }
 
     /**
@@ -114,6 +114,11 @@ class DriverController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delete = Driver::where('id', $id)->delete();
+
+        if($delete){
+  
+            return back()->with('success', 'Driver deleted successfully!'); 
+        }
     }
 }
