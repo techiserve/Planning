@@ -1492,7 +1492,15 @@ class PlanningController extends Controller
 
             //  return view('plan.pdf');
         // Download PDF
-        return $pdf->download('data.pdf');
+
+        $startdate = $plan->date; // Example start date
+        $enddate = $plan->enddate;   // Example end date
+        $from = $plan->route;   // Example "from" location
+
+        $filename = "{$startdate} - {$enddate} ({$from}).pdf";
+
+
+        return $pdf->download($filename);
     }
 
 
