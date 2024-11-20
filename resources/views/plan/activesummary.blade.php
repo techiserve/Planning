@@ -81,6 +81,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#truckModal-{{ $loop->index }}">
                              View Trucks
                             </button>   
+                            <a href="/plan/delete/{{$details->id}}" class="btn btn-danger btn-md">Delete</a>
                             
                                        <!-- Modal -->
                     <div class="modal fade" id="truckModal-{{ $loop->index }}" tabindex="-1" aria-labelledby="truckModalLabel-{{ $loop->index }}" aria-hidden="true">

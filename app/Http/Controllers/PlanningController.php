@@ -1387,7 +1387,7 @@ class PlanningController extends Controller
 
     public function changeassignment()
     {
-        $assignments = Plandetails::where('date', '>=', now()->format('Y-m-d'))->orderBy('date', 'desc')->get();
+        $assignments = Plandetails::where('date', '>=', now()->format('Y-m-d'))->orderBy('date', 'asc')->orderBy('truck', 'asc')->get();
         $routes = Route::all();
 
         return view('plan.changeassignment', compact('assignments','routes'));
@@ -1425,15 +1425,14 @@ class PlanningController extends Controller
         $planDetails = DB::table('plandetails')
         ->where('plandetails.date', '>=', now()->format('Y-m-d'))
         ->join('plans', 'plandetails.plan_id', '=', 'plans.id') 
-        ->select('plandetails.date', 'plandetails.plan_id', 'plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
-       // ->orderByRaw('MAX(date) DESC')
+        ->select('plandetails.date', 'plandetails.plan_id', 'plandetails.id','plandetails.route', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
         ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber','plandetails.plan_id')
         ->get();
 
         $trucks = DB::table('plandetails')
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->select('plandetails.truck','assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
      $routes = Route::all();
@@ -1449,8 +1448,7 @@ class PlanningController extends Controller
         $planDetails = DB::table('plandetails')
         ->where('plandetails.date', '=', now()->format('Y-m-d'))
         ->join('plans', 'plandetails.plan_id', '=', 'plans.id') 
-        ->select('plandetails.date', 'plandetails.route','plandetails.plan_id', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
-       // ->orderByRaw('MAX(date) DESC')
+        ->select('plandetails.date', 'plandetails.route','plandetails.id','plandetails.plan_id', 'plans.product','plans.loadingNumber',DB::raw('SUM(trips) as total_trips'), DB::raw('COUNT(DISTINCT truck) as total_trucks'))
         ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber','plandetails.plan_id')
         ->get();
 
@@ -1509,6 +1507,13 @@ class PlanningController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $plan = Plandetails::where('id', $id)->first();
+
+        $delete  = Plandetails::where('route', $plan->route)->where('date', $plan->date)->delete();
+
+        if($delete){
+  
+            return back()->with('success', 'Plan deleted successfully!'); 
+        }
     }
 }

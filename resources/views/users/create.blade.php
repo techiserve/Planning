@@ -51,35 +51,13 @@
                                                                 <input type="text" name="surname" class="form-control">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Address</label>
-                                                                <input type="text" name="address"  class="form-control">
-                                                            </div>
-                                                        </div>
+                                                 
                                                        
                                                     </div>
     
                                       
                                                     <div class="row mt-4">
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Department</label>
-                                                                <div class="invoice-action-currency">
-                                                                    <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="department" class="form-select">
-                                                                    <option selected="">Choose...</option>
-                                                                    <option value="IT">IT</option>
-                                                                    <option value="Operations">Operations</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                    <option value="Management">Management</option>
-                                                                    <option value="Security">Security</option>
-                                                                    <option value="HR">HR</option>                                                          
-                                                                   </select>  
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                
     
                                                          <div class="col-md-6">
                                                             <div class="mb-3">
@@ -90,17 +68,8 @@
                                                        
                                                         <div class="col-md-6">
                                                             <div  class="mb-3">
-                                                            <label class="form-label">User Role</label>
-                                                                <div class="invoice-action-currency">
-                                                                    <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="userRole" class="form-select">
-                                                                    <option selected="">Choose...</option>
-                                                                    @foreach ($roles as $role)  
-                                                                    <option value="{{ $role->id }}">{{$role->Name}}</option>
-                                                                    @endforeach                                                   
-                                                                   </select>  
-                                                                    </div>
-                                                                </div>
+                                                            <label class="form-label">Password</label>
+                                                            <input type="password" name="password"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
                                                     </div>

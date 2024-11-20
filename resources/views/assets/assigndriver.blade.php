@@ -32,16 +32,19 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <strong>Make:</strong> {{ $asset->make }}
+                </div>
+                <div class="col-md-3">
+                    <strong>Asset Number:</strong> {{ $asset->licenseNumber }}
                 </div>
                 <div class="col-md-3">
                     <strong>Registration Number:</strong> {{ $asset->registration }}
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <strong>Model:</strong> {{ $asset->model }}
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <strong>Capacity:</strong> {{ $asset->payloadCapacity }}
                 </div>
             </div>

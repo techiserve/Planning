@@ -110,7 +110,8 @@ class AssetController extends Controller
 
       }
 
-        return back()->with('success', 'Driver Assigned successfully!'); 
+      return redirect()->route('assets.index')->with('success', 'Driver Assigned successfully!');
+       // return back()->with('success', 'Driver Assigned successfully!'); 
     }
 
     public function assigndriver(string $id)

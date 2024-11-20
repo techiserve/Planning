@@ -67,7 +67,7 @@
                                                             <div class="mb-3">
                                                          
                                                             <label class="form-label">ID Number</label>
-                                                            <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">                                                                                                                                                                                                                        
+                                                            <input type="text" name="licenseNumber" maxlength="13" class="form-control add-payment-method-input">                                                                                                                                                                                                                        
                                                             </div>
                                                         </div>
 

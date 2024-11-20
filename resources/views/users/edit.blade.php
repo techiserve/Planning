@@ -55,7 +55,7 @@
                                                     <div class="row justify-content-between">
                                                         <div class="col-xl-5 invoice-address-company">
     
-                                                            <h4>Route Details:</h4>
+                                                            <h4>User Details:</h4>
     
                                                             <form method="post" action="/users/update/{{$user->id}}">
                                                             @csrf 
@@ -71,13 +71,7 @@
     
                         
     
-                                                                <div class="form-group row">
-                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Address</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="address" id="company-address" placeholder="" value="{{$user->address}}">
-                                                                    </div>
-                                                                </div>
-                                                               
+                                                
     
                                                                 
                                                             </div>
@@ -91,20 +85,7 @@
     
                                                             <div class="invoice-address-client-fields">
     
-                                                                <div class="form-group row">
-                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Department</label>
-                                                                    <div class="col-sm-9">
-                                                                        <select name="department" class="form-select">
-                                                                    <option selected="{{$user->department}}">{{$user->department}}</option>
-                                                                    <option value="IT">IT</option>
-                                                                    <option value="Operations">Operations</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                    <option value="Management">Management</option>
-                                                                    <option value="Security">Security</option>
-                                                                    <option value="HR">HR</option>                                                          
-                                                                   </select> 
-                                                                    </div>
-                                                                </div>
+                                   
     
                                                                 <div class="form-group row">
                                                                     <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm">Email</label>
@@ -113,23 +94,7 @@
                                                                     </div>
                                                                 </div>
     
-                                                                <div class="form-group row">
-                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm">User Role</label>
-                                                                    <div class="col-sm-9">
-                                                                        <select name="userRole" class="form-select">
-                                                                            @foreach($roles as $role)
-                                                                            @if($role->id == $user->userRole)
-                                                                            <option value="{{$role->id }}" >{{$role->Name}}</option>  
-                                                                            @endif
-                                                                            @endforeach
-
-                                                                            @foreach($roles as $role)
-                                                                                <option value="{{ $role->id }}"> {{ $role->Name }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                    </div>
-                                                                </div>
-    
+                                                     
                                                               
                                                                 
                                                             </div> 

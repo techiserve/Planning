@@ -106,16 +106,29 @@
 
                 <!-- Row 1: Route and Start Date -->
                 <div class="row">
-                    <div class="col-md-6">
-                        <!-- Route Information -->
+                    <div class="col-md-6">                       
                         <div class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
-                                <div class="fw-bold title">Route :</div>
-                                <p class="sub-title mb-0">{{ $route->from }} to {{ $route->to }}</p>
+                                <div class="fw-bold">Client Name:</div>
+                                <p class="sub-title mb-0">{{ $clientname }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
+                         <!-- Route Information -->
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold title">Route:</div>
+                                <p class="sub-title mb-0">{{ $route->from }} to {{ $route->to }}</p>
+                            </div>
+                        </div>                  
+                    </div>
+                </div>
+
+                <!-- Row 2: End Date and Loading Number -->
+                <div class="row">
+                    <div class="col-md-6">
+
                         <!-- Start Date -->
                         <div class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
@@ -123,13 +136,12 @@
                                 <p class="sub-title mb-0">{{ $date->format('d F Y') }}</p>
                             </div>
                         </div>
+                   
                     </div>
-                </div>
-
-                <!-- Row 2: End Date and Loading Number -->
-                <div class="row">
                     <div class="col-md-6">
-                        @if($enddate)
+
+                         
+                    @if($enddate)
                         <div class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
                                 <div class="fw-bold">End Date:</div>
@@ -137,24 +149,18 @@
                             </div>
                         </div>
                         @endif
-                    </div>
-                    <div class="col-md-6">
-                        <div class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="me-auto">
-                                <div class="fw-bold">Loading Number:</div>
-                                <p class="sub-title mb-0">{{ $loading }}</p>
-                            </div>
-                        </div>
+
+                 
                     </div>
                 </div>
 
                 <!-- Row 3: Max Loads and Product -->
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
-                                <div class="fw-bold">Client Name:</div>
-                                <p class="sub-title mb-0">{{ $clientname }}</p>
+                                <div class="fw-bold">Loading Number:</div>
+                                <p class="sub-title mb-0">{{ $loading }}</p>
                             </div>
                         </div>
                     </div>

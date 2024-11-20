@@ -75,7 +75,7 @@
                     <div class="th-bottom">ORIGINATOR NAME:</div>
                 </div></th>
                 <th class="tall-th" style="background-colo:white;" colspan="3">  <div class="th-content">
-                    <div class="th-top">{{$plan->clientname}} </div>
+                    <div class="th-top">{{$plan->name}} </div>
                     <hr class="divider">
                     <div class="th-bottom">{{$user->name}}</div>
                 </div></th>
@@ -112,7 +112,7 @@
                 <td>N/A</td>
                 <td>{{$info->licenseNumber}}</td>
                 
-                <td>{{$plan->maxloads}}</td>
+                <td>{{$info->trips}}</td>
                 <td>{{$plan->product}}</td>
                 <td>{{$plan->loadingNumber}}</td>
             </tr>
