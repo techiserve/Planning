@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/fetchData', [UserController::class, 'fetchData'])->name('users.fetchData');
     Route::post('/users/userRole', [UserController::class, 'userRole'])->name('users.userRole');
+    Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
 
     //Assets Routes
     Route::get('/assets/parameters', [AssetController::class, 'parameters'])->name('assets.parameters');

@@ -111,11 +111,11 @@ class UserController extends Controller
         $userrole->city = $request->city;
         $userrole->country = $request->country;
         $userrole->age = $request->age;
-        $userrole->phoneNumber = $request->phoneNumber;
+       // $userrole->phoneNumber = $request->phoneNumber;
         $userrole->department = $request->department;
         $userrole->userRole = $request->userRole;
         $userrole->employeeNumber = $request->employeeNumber;
-        $userrole->password = Hash::make(12345678);
+        $userrole->password = Hash::make(123);
         $userrole->save();
 
 
@@ -152,7 +152,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::where('id',$id)->first();
+        $roles = Userrole::all();
+
+        return view('users.edit', compact('user','roles'));
     }
 
     /**
@@ -160,7 +163,24 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+      //  dd($id,$request->status,$request->statusReason);
+
+        $userUpdate = User::where('id',$id)->update([
+
+            'name'    =>$request->name, 
+            'address'    =>$request->address, 
+            'department'    =>$request->department, 
+            'email'    =>$request->email, 
+            'userRole'    =>$request->userRole,             
+
+        ]);
+
+        if($userUpdate){
+
+            return back()->with('success', 'User updated successfully!'); 
+        }
+
+        return back()->with('error', 'Failed to update User!'); 
     }
 
     /**
@@ -168,6 +188,11 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delete = User::where('id', $id)->delete();
+
+        if($delete){
+  
+            return back()->with('success', 'User deleted successfully!'); 
+        }
     }
 }

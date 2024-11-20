@@ -1059,6 +1059,7 @@ class PlanningController extends Controller
                      $routesWithDates[] = $route;
                  }
 
+
                  return view('plan.route', compact('routesWithDates','dates','drivers'));
             }
         
@@ -1095,6 +1096,11 @@ class PlanningController extends Controller
                     $currentplan = Plandetails::where('id',  $plan_ids[$key])->first();
                     $prevplan = Plandetails::where('date',  $currentplan->date)->where('routeId', $routes[$key])->first();
 
+                    if(!$prevplan){
+                         
+                        return redirect()->route('plan.changeassignment')->with('warning', 'You selected a route that has no plan!');
+
+                    }
                     //dd($currentplan,$prevplan,$currentplan->date,$routes[$key],$route);
 
                     $arrData[] = array(
@@ -1318,6 +1324,8 @@ class PlanningController extends Controller
            // $shifts = $request->input('shifts');
             $times = $request->input('times');
             $status = $request->input('status');
+
+           // dd($truck_ids );
 
                 foreach($truck_ids as $key => $n ) {
 

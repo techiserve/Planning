@@ -57,37 +57,10 @@
                                                                 <input type="text" name="address"  class="form-control">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">City</label>
-                                                                <input type="text"  name="city" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Country</label>                                              
-                                                                <input type="text"  name="country" class="form-control">
-                                                                                                                      
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Age</label>
-                                                                <input type="text"  name="age"  class="form-control">
-                                                            </div>
-                                                        </div>
+                                                       
                                                     </div>
     
-                                                
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                                            <div class="section general-info payment-info">
-                                                <div class="info">
-                                                    <h6 class="">Add Company Details</h6>                                     
-    
+                                      
                                                     <div class="row mt-4">
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
@@ -96,12 +69,12 @@
                                                                     <div class="dropdown selectable-dropdown cardName-select">
                                                                     <select name="department" class="form-select">
                                                                     <option selected="">Choose...</option>
-                                                                    <option value="united-states">IT</option>
-                                                                    <option value="brazil">Operations</option>
-                                                                    <option value="indonesia">Accounts</option>
-                                                                    <option value="turkey">Management</option>
-                                                                    <option value="russia">Security</option>
-                                                                    <option value="india">HR</option>                                                          
+                                                                    <option value="IT">IT</option>
+                                                                    <option value="Operations">Operations</option>
+                                                                    <option value="Accounts">Accounts</option>
+                                                                    <option value="Management">Management</option>
+                                                                    <option value="Security">Security</option>
+                                                                    <option value="HR">HR</option>                                                          
                                                                    </select>  
                                                                     </div>
                                                                 </div>
@@ -114,25 +87,7 @@
                                                                 <input type="email" name="email"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Phone Number</label>
-                                                                <input type="text" name="phoneNumber"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Employee Number</label>
-                                                                <input type="text" name="employeeNumber"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">User Name</label>
-                                                                <input type="text"  name="userName"  class="form-control">
-                                                            </div>
-                                                        </div>
-
+                                                       
                                                         <div class="col-md-6">
                                                             <div  class="mb-3">
                                                             <label class="form-label">User Role</label>
