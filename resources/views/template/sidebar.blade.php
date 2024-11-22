@@ -46,7 +46,9 @@
                             <li>
                                 <a href="/plan/summary"> Summary </a>
                             </li>                  
-                         
+                            <li>
+                                <a href="/plan/planindex"> Plans </a>
+                            </li>   
                         </ul>
                     </li>
                     @endif

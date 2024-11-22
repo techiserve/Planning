@@ -321,9 +321,8 @@
                     </div>
 
                     <div class="d-flex justify-content-sm-end justify-content-center">
-                                            <button type="submit" class="btn btn-primary" >Confirm Plan</button> 
-                                         
-                                        </div>
+                        <button type="submit" class="btn btn-primary" >Confirm Plan</button>                                       
+                    </div>
     
                     </form>
 

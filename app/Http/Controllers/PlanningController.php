@@ -50,6 +50,18 @@ class PlanningController extends Controller
     }
 
 
+    public function planindex()
+    {
+        
+        $plans = Plan::all();
+
+      //  dd($plans);
+
+        return view('plan.planindex', compact('plans'));
+
+    }
+
+
     public function showcontractplan($id)
     {
         $user = auth()->user();
@@ -1046,18 +1058,25 @@ class PlanningController extends Controller
                  $routes = Route::all();
                  $drivers = Driver::all();
 
-                 $dates = [];
-                 // Loop to generate the next 7 days including today
-                 for ($i = 0; $i <= 6; $i++) {
-                     $dates[] = Carbon::now()->addDays($i)->format('Y-m-d'); // Format the date as you need (e.g., 'Y-m-d')
-                 }
+                //  $dates = [];
+                //  // Loop to generate the next 7 days including today
+                //  for ($i = 0; $i <= 6; $i++) {
+                //      $dates[] = Carbon::now()->addDays($i)->format('Y-m-d'); // Format the date as you need (e.g., 'Y-m-d')
+                //  }
 
-                 $routesWithDates = [];
-                 foreach ($routes as $route) {
-                     // Add the dates array as a property of each route
-                     $route->dates = $dates;
-                     $routesWithDates[] = $route;
-                 }
+                $dates = [];
+                for ($i = 0; $i < 8; $i++) {
+                    $date = now()->addDays($i)->format('Y-m-d');
+                    $dates[] = $date;
+                }
+                   $routesWithDates = $routes;
+
+                //  $routesWithDates = [];
+                //  foreach ($routes as $route) {
+                //      // Add the dates array as a property of each route
+                //      $route->dates = $dates;
+                //      $routesWithDates[] = $route;
+                //  }
 
 
                  return view('plan.route', compact('routesWithDates','dates','drivers'));
@@ -1146,12 +1165,135 @@ class PlanningController extends Controller
           
     }
 
+
+
+    public function planupdate(Request $request, $id)
+    {
+    
+     //   dd($request->all());
+
+        $startDate = Carbon::parse($request->date);
+        $endDate = Carbon::parse($request->enddate);
+          
+        $dates = [];
+
+        if ($startDate->eq($endDate)) {
+            // If start and end dates are the same, add only one date to the array
+            $dates[] = $startDate->format('Y-m-d');
+        } else {
+            
+            $currentDate = $startDate->copy();
+            while ($currentDate->lte($endDate)) {
+                $dates[] = $currentDate->format('Y-m-d'); // Add each date to the array
+                $currentDate->addDay(); // Increment by one day
+            }
+        }
+
+
+
+    $userId = Auth::user()->id;
+
+    $getroute = Route::where('id', $request->route)->first();
+
+    $createplan = Plan::where('id', $id)->update([
+
+        'date' => $request->date,
+        'name' => $request->clientname,
+        'enddate' => $request->enddate,
+        'product' => $request->product,
+        'maxloads' => $request->maxloads,
+        'loadingNumber' => $request->loadingNumber,
+        'routeId' => $request->route,
+        'route' => $getroute->from .' to '. $getroute->to ,
+
+    ]);
+
+ 
+    $delete  = Plandetails::where('plan_id',$id)->delete();
+
+    foreach ($dates as $date) {
+
+        $truck_ids = $request->input('truck_ids');
+        $nooftrips = $request->input('nooftrips');
+        $driver = $request->input('driver');
+       // $shifts = $request->input('shifts');
+        $times = $request->input('times');
+        $status = $request->input('status');
+
+        
+
+            foreach($truck_ids as $key => $n ) {
+              //  dd($n);
+
+                $truck = Asset::where('licenseNumber', $n)->first();
+
+                $arrData[] = array(
+
+                    $companyrole = Plandetails::create([
+
+                        'plan_id' => $id,
+                        'route' => $getroute->from .' to '. $getroute->to ,
+                        'routeId' => $request->route,
+                        'date' => $date,
+                        'truck' =>  $truck->licenseNumber,
+                        'trips'  => $nooftrips[$key], 
+                        'time'  => $times[$key],
+                        'driver_id'  => $driver[$key],
+                        'createdBy' => $userId
+                        
+                    ]),
+
+                    
+                $truckupdate = Asset::where('licenseNumber', $n)->update([
+
+                    'status'  => 1,
+                ]),
+
+
+                    $companyroles = Plandetailshistory::create([
+
+                        'plan_id' => $id,
+                        'plandetails_id' =>  $companyrole->id,
+                        'route' => $getroute->from .' to '. $getroute->to ,
+                        'routeId' => $request->route,
+                        'date' => $date,
+                        'truck' =>  $truck->licenseNumber,
+                        //'truck_id' => $truck_ids[$key],
+                        'trips'  => $nooftrips[$key],
+                        'time'  => $times[$key],
+                        'driver_id'  => $driver[$key],
+                        'createdBy' => $userId
+                        
+                    ])
+                );
+
+            }
+
+        }
+               
+     
+                if($companyrole){
+
+                    return back()->with('success', 'Plan updated successfully!');
+                }
+                  return back()->with('error', 'Failed to update Plan!');
+          
+    }
+
     /**
      * Display the specified resource.
      */
     public function dates(Request $request)
     {
-        //dd($request->all());
+        $route = Route::where('id', $request->route_id)->first();
+
+        $searchplan = Plan::where('name', $request->clientname)->where('route', $route->from .' to '. $route->to)->where('date', $request->date)->where('enddate', $request->enddate)->where('product',$request->product)->first();
+
+       if($searchplan){
+
+        return back()->with('warning', 'Plan with that route and date already exists!');
+
+       }
 
         $enddates = $request->input('enddate');
         $enddate = Carbon::parse($enddates);
@@ -1161,7 +1303,7 @@ class PlanningController extends Controller
         $maxloads = $request->maxloads;
         $clientname = $request->clientname;
 
-        $route = Route::where('id', $request->route_id)->first();
+        
         $dateString = $request->input('date'); 
         $date = Carbon::parse($dateString);
         $drivers = Driver::all();
@@ -1183,9 +1325,15 @@ class PlanningController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function assigndriver(string $id)
+    public function editplan(string $id)
     {
-        dd($id);
+
+        $plan = Plan::where('id',$id)->first();
+        $details = Plandetails::where('plan_id', $id)->groupBy('truck')->get();
+        $drivers = Driver::all();
+        $routes = Route::all();
+
+        return view('plan.editplan', compact('details','plan','drivers','routes'));
     }
 
     public function filter(Request $request)
@@ -1280,7 +1428,7 @@ class PlanningController extends Controller
     public function setplan(Request $request)
     {
 
-      
+   
             $startDate = Carbon::parse($request->date);
             $endDate = Carbon::parse($request->enddate);
               
@@ -1512,6 +1660,18 @@ class PlanningController extends Controller
         $delete  = Plandetails::where('route', $plan->route)->where('date', $plan->date)->delete();
 
         if($delete){
+  
+            return back()->with('success', 'Plan deleted successfully!'); 
+        }
+    }
+
+    public function deleteplan(string $id)
+    {
+        $plan = Plandetails::where('id', $id)->first();
+        
+        $plandelete = Plandetails::where('plan_id', $plan->plan_id)->where('route', $plan->route)->where('truck', $plan->truck)->delete();
+
+        if($plandelete){
   
             return back()->with('success', 'Plan deleted successfully!'); 
         }

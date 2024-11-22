@@ -81,14 +81,10 @@
                     <input type="text" name="clientname" id="clientname" class="form-control">
 
                     <label for="date">Choose Start Date:</label>
-                    <select name="date" id="date" class="form-control">
-                        <!-- This will be dynamically populated by JS -->
-                    </select>
+                    <select name="date" id="date" class="form-control"></select>
 
-                    <label for="end_date" class="mt-3">Choose End Date:</label>
-                    <select name="enddate" id="enddate" class="form-control">
-                        <!-- This will be dynamically populated by JS -->
-                    </select>
+                    <label for="enddate" class="mt-3">Choose End Date:</label>
+                    <select name="enddate" id="enddate" class="form-control"></select>
                   
                      <!-- Time Field -->
                     <label for="time" class="mt-3">Choose Start Time:</label>
@@ -143,10 +139,74 @@
         });
     });
 </script>
+<script>
+$(document).ready(function() {
+    function getNextSevenDays(startDate) {
+        const dates = [];
+        const start = new Date(startDate);
+        
+        // Add the next 7 days including the start date
+        for(let i = 0; i < 8; i++) {
+            const currentDate = new Date(start);
+            currentDate.setDate(start.getDate() + i);
+            
+            // Format date as YYYY-MM-DD
+            const formattedDate = currentDate.toISOString().split('T')[0];
+            dates.push(formattedDate);
+        }
+        
+        return dates;
+    }
 
+    // Modify the existing modal show event handler
+    $('#selectDateModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var routeId = button.data('route-id');
+        var modal = $(this);
 
+        // Set the route ID
+        modal.find('#route-id').val(routeId);
 
+        // Get the dates from Laravel
+        var dates = @json($dates);
 
+        var dateSelect = modal.find('#date');
+        var endDateSelect = modal.find('#enddate');
+        
+        // Clear previous options
+        dateSelect.empty();
+        endDateSelect.empty();
+
+        // Populate start date dropdown with all available dates
+        dates.forEach(function(date) {
+            dateSelect.append(new Option(date, date));
+        });
+
+        // Initial population of end date based on first start date
+        if (dates.length > 0) {
+            const nextDates = getNextSevenDays(dates[0]);
+            nextDates.forEach(function(date) {
+                endDateSelect.append(new Option(date, date));
+            });
+        }
+    });
+
+    // Add change event handler for start date
+    $('#date').on('change', function() {
+        var selectedDate = $(this).val();
+        var endDateSelect = $('#enddate');
+        
+        // Clear previous end date options
+        endDateSelect.empty();
+        
+        // Get and populate new date range
+        const nextDates = getNextSevenDays(selectedDate);
+        nextDates.forEach(function(date) {
+            endDateSelect.append(new Option(date, date));
+        });
+    });
+});
+</script>
 
 @endsection
 

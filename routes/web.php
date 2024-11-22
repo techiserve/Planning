@@ -120,6 +120,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/plan/route', [PlanningController::class, 'allroutes'])->name('plan.route');
     Route::get('/plan/downloadpdf/{id}', [PlanningController::class, 'downloadpdf'])->name('plan.downloadpdf');
     Route::get('/plan/delete/{id}', [PlanningController::class, 'destroy'])->name('plan.delete');
+    Route::get('/plan/deleteplan/{id}', [PlanningController::class, 'deleteplan'])->name('plan.deleteplan');
     Route::post('/plan/dates', [PlanningController::class, 'dates'])->name('plan.dates');
     Route::post('/plan/setplan', [PlanningController::class, 'setplan'])->name('plan.setplan');
     Route::get('/plan/changeassignment', [PlanningController::class, 'changeassignment'])->name('plan.changeassignment');
@@ -129,7 +130,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/summary/filter', [PlanningController::class, 'filter'])->name('summary.filter');
     Route::post('/activesummary/filter', [PlanningController::class, 'activesummaryfilter'])->name('activesummary.filter');
     Route::post('/plan/updateplan', [PlanningController::class, 'updateplan'])->name('plan.updateplan');
-
+    Route::get('/plan/planindex', [PlanningController::class, 'planindex'])->name('plan.planindex');
+    Route::get('/plan/editplan/{id}', [PlanningController::class, 'editplan'])->name('plan.editplan');
+    Route::put('/plan/planupdate/{id}', [PlanningController::class, 'planupdate'])->name('plan.planupdate');
 
 
     Route::delete('/planning/editroutemonthlyplandriver/{id}', [PlanningController::class, 'editroutemonthlyplandriver'])->name('assignments.editroutemonthlyplandriver');
