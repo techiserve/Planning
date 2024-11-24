@@ -202,9 +202,7 @@
                             <li>
                                 <a href="/users/index"> Manage Users </a>
                             </li>
-                            <li>
-                                <a href="/users/parameters"> Parameters </a>
-                            </li>
+                          
                         </ul>
                     </li>
                     @endif
