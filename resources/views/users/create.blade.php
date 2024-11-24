@@ -73,6 +73,21 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                        <div class="row mt-4">                                     
+                                               <div class="col-md-6">
+                                                   <div  class="mb-3">
+                                                   <label class="form-label">User Role</label>
+                                                   <select name="userole" class="form-select"> 
+                                                                <option value="" disabled selected>Select Userole</option>                                                  
+                                                                    <option value="1">Administrator</option> 
+                                                                    <option value="2">Supervisor</option> 
+                                                                    <option value="3">Planner</option> 
+                                                                    <option value="4">Enabler</option> 
+                                                                </select> 
+                                                   </div>
+                                               </div>
+                                           </div>
     
                                                   
                                                 </div>

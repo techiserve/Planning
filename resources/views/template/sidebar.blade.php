@@ -25,7 +25,7 @@
                     </li>
 
                     
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
+                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2 || Auth::user()->userRole == 3)
                     <!-- Planning Module -->
                     <li class="menu">                  
                         <a href="#plan" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -58,7 +58,7 @@
                     <li class="menu menu-heading">
                         <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>Enablers Modules</span></div>
                     </li>
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
+                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
                     <!-- Asset Management -->
                     <li class="menu">
                         <a href="#asset" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -82,7 +82,7 @@
                     </li>
                     @endif
 
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 || Auth::user()->userRole == 11)
+                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
                    
                     <li class="menu">
                         <a href="#driver" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -105,7 +105,7 @@
                     </li>
                     @endif
 
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
+                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
                     <!-- Contract Management -->
                     <li class="menu">
                         <a href="#contract" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

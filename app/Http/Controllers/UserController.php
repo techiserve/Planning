@@ -113,7 +113,7 @@ class UserController extends Controller
         $userrole->age = $request->age;
        // $userrole->phoneNumber = $request->phoneNumber;
         $userrole->department = $request->department;
-        $userrole->userRole = 1;
+        $userrole->userRole = $request->userole;
         $userrole->employeeNumber = $request->employeeNumber;
         $userrole->password = Hash::make($request->password);
         $userrole->save();
