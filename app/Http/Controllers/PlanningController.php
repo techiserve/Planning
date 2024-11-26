@@ -980,9 +980,6 @@ class PlanningController extends Controller
         }
 
 
-
-
-
         public function reassignroutemonthlyplanasset($id){
 
            
@@ -992,14 +989,12 @@ class PlanningController extends Controller
        
             return view('planning.reassignasset', compact('asset','contracts','routes'));
             
-            }
+        }
 
 
 
             public function reassignasset(Request $request,$id){
-
-           
-              // dd($request->routeplan, $request->route);
+          
 
                $asset = Routeasset::where('asset', $id)->update([
 
@@ -1606,7 +1601,7 @@ class PlanningController extends Controller
         ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
-     $routes = Route::all();
+       $routes = Route::all();
          
         return view('plan.todaysummary', compact('planDetails','trucks','routes'));
     }
@@ -1615,29 +1610,25 @@ class PlanningController extends Controller
 
     public function downloadpdf($id)
     {
-        // Fetch data from the database
-        //dd($id);
+ 
         $plan = Plan::where('id',$id)->first();
         $route = Route::where('id', $plan->routeId)->first();
         $user = User::where('id',$plan->createdBy)->first();
 
-       // $data = Plandetails::where('plan_id',$id)->groupBy('truck')->get();
 
         $data = DB::table('plandetails')
         ->where('plan_id',$id)
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
-        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') 
         ->select('plandetails.truck', 'assets.registration','assets.regNumber1','assets.regNumber2', 'assets.make', 'drivers.name', 'drivers.licenseNumber','drivers.surname', 'assets.model','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->groupby('plandetails.truck')
         ->get();
 
-       // dd($trucks);
 
         $pdf = PDF::loadView('plan.pdf', ['data' => $data,'plan' => $plan,'route' => $route,'user' => $user])
                 ->setPaper('a4', 'landscape');
 
-            //  return view('plan.pdf');
-        // Download PDF
+
 
         $startdate = $plan->date; // Example start date
         $enddate = $plan->enddate;   // Example end date
@@ -1645,8 +1636,8 @@ class PlanningController extends Controller
 
         $filename = "{$startdate} - {$enddate} ({$from}).pdf";
 
-
         return $pdf->download($filename);
+
     }
 
 
@@ -1676,4 +1667,17 @@ class PlanningController extends Controller
             return back()->with('success', 'Plan deleted successfully!'); 
         }
     }
+
+
+    public function remove(string $id)
+    {
+        $plan = Plan::where('id', $id)->first();
+  
+        $delete  = Plandetails::where('plan_id', $plan->id)->delete();
+        $plandelete = Plan::where('id', $id)->delete();
+
+          return back()->with('success', 'Plan deleted successfully!'); 
+    
+    }
+
 }

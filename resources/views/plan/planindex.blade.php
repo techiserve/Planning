@@ -57,7 +57,8 @@
                             <a type="button" class="btn btn-primary"  
                                         href="/plan/editplan/{{ $plan->id }}">
                                     Edit
-                            </a>                
+                            </a>  
+                            <a href="/plan/remove/{{$plan->id}}" class="btn btn-danger btn-md">Delete</a>              
                                 
             
                             </td>

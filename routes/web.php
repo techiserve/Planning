@@ -121,6 +121,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/plan/downloadpdf/{id}', [PlanningController::class, 'downloadpdf'])->name('plan.downloadpdf');
     Route::get('/plan/delete/{id}', [PlanningController::class, 'destroy'])->name('plan.delete');
     Route::get('/plan/deleteplan/{id}', [PlanningController::class, 'deleteplan'])->name('plan.deleteplan');
+    Route::get('/plan/remove/{id}', [PlanningController::class, 'remove'])->name('plan.remove');
     Route::post('/plan/dates', [PlanningController::class, 'dates'])->name('plan.dates');
     Route::post('/plan/setplan', [PlanningController::class, 'setplan'])->name('plan.setplan');
     Route::get('/plan/changeassignment', [PlanningController::class, 'changeassignment'])->name('plan.changeassignment');
