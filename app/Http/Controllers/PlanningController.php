@@ -43,6 +43,7 @@ class PlanningController extends Controller
      */
     public function contractplan()
     {
+         dd( ini_get('max_input_vars'));
         
         $contracts = Contract::all();
 
