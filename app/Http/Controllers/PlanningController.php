@@ -1468,7 +1468,7 @@ class PlanningController extends Controller
             $times = $request->input('times');
             $status = $request->input('status');
 
-           // dd($truck_ids );
+            dd($truck_ids );
 
                 foreach($truck_ids as $key => $n ) {
 
