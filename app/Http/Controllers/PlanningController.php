@@ -1422,7 +1422,7 @@ class PlanningController extends Controller
      */
     public function setplan(Request $request)
     {
-        dd( ini_get('max_input_vars'));
+       // dd( ini_get('max_input_vars'));
             // dd($request->input('truck_ids'),$request->input('nooftrips'), $request->clientname);
              
             $startDate = Carbon::parse($request->date);
