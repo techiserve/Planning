@@ -1422,8 +1422,9 @@ class PlanningController extends Controller
      */
     public function setplan(Request $request)
     {
-
-   
+        dd( ini_get('max_input_vars'));
+            // dd($request->input('truck_ids'),$request->input('nooftrips'), $request->clientname);
+             
             $startDate = Carbon::parse($request->date);
             $endDate = Carbon::parse($request->enddate);
               
@@ -1468,7 +1469,7 @@ class PlanningController extends Controller
             $times = $request->input('times');
             $status = $request->input('status');
 
-            dd($truck_ids );
+          //  dd($truck_ids); 
 
                 foreach($truck_ids as $key => $n ) {
 

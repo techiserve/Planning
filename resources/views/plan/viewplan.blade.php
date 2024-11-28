@@ -253,7 +253,7 @@
                                                     </div>
                                                 </div>
 
-                                                
+             
                                                 <div class="user-meta-info">
                                                     <p class="user-name" data-name="Alan Green">{{$truck->make}}</p>
                                                     <p class="user-work" data-occupation="Web Developer">{{$truck->model}}</p>
