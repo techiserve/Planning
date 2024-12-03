@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('resourcePoolStatus')->nullable();
             $table->string('routeresourcePoolStatus')->nullable();
             $table->string('status')->nullable();
+            $table->string('checkcode')->nullable();
             $table->integer('isAssigned')->nullable();
             $table->string('updatedBy')->nullable();
             $table->string('createdBy')->nullable();

@@ -143,7 +143,8 @@ class RouteController extends Controller
             'Type'    =>$request->Type, 
             'activity'           =>$request->activity, 
             'distance'           =>$request->distance, 
-            'rate'              =>$request->rate,         
+            'rate'              =>$request->rate,
+            'consumption'              =>$request->consumption,          
             'updatedBy'   =>Auth::user()->id,               
 
         ]);

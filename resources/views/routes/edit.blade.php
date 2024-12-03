@@ -83,6 +83,13 @@
                                                                     </div>
                                                                 </div>
     
+                                                                <div class="form-group row">
+                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Fuel Consumption</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control form-control-sm"  name="consumption" id="company-address" placeholder="" value="{{$contract->consumption}}">
+                                                                    </div>
+                                                                </div>
+    
                                                                 
                                                             </div>
                                                             

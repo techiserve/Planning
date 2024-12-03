@@ -27,6 +27,7 @@ class Driver extends Model
         'isAssigned',
         'statusReason',
         'createdBy',
+        'checkcode',
         'updatedBy',
        
     ];

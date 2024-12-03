@@ -97,6 +97,9 @@
                     <label for="product" class="mt-3">Product:</label>
                     <input type="text" name="product" id="product" class="form-control">
 
+                    <label for="product" class="mt-3">Product Type:</label>
+                    <input type="text" name="producttype" id="producttype" class="form-control">
+
                     <label for="product" class="mt-3">Max Loads:</label>
                     <input type="text" name="maxloads" id="loads" class="form-control">
 

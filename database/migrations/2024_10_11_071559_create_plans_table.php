@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('route')->nullable();
             $table->integer('routeId')->nullable();
             $table->string('product')->nullable();
+            $table->string('producttype')->nullable();
             $table->string('maxloads')->nullable();
             $table->string('loadingNumber')->nullable();
             $table->string('date')->nullable();

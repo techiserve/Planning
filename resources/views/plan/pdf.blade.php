@@ -109,7 +109,7 @@
                 <td>{{$info->regNumber1}}</td>
                 <td>{{$info->regNumber2}}</td>
                 <td>{{$info->name}}{{$info->surname}}</td>
-                <td>N/A</td>
+                <td>{{$info->checkcode}}</td>
                 <td>{{$info->licenseNumber}}</td>
                 
                 <td>{{$info->trips}}</td>

@@ -331,6 +331,7 @@ class ContractController extends Controller
         $userrole->estimatedmonthQuantity = $request->monthQuantity;
         $userrole->routeCategory = $request->routeCategory;
         $userrole->type = $request->type;
+        $userrole->consumption = $request->consumption;
         $userrole->createdBy = $user->name;
         $userrole->save();
 

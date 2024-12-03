@@ -1298,6 +1298,7 @@ class PlanningController extends Controller
         $product = $request->product;
         $maxloads = $request->maxloads;
         $clientname = $request->clientname;
+        $producttype = $request->producttype;
 
         
         $dateString = $request->input('date'); 
@@ -1313,8 +1314,21 @@ class PlanningController extends Controller
         ->whereNull('plandetails.id') // Filter out those with assignments
         ->select('assets.*') // Select all columns from assets
         ->get();
+
+        $drivers = Driver::all();
+
+        foreach($drivers as $driver){
+
+
+          //  dd($driver->licenseNumber.$driver->id);
+ 
+            $createcode = Driver::where('id', $driver->id)->update([
+
+                'checkcode' => $driver->licenseNumber.$driver->id,
+            ]); 
+        }
      
-        return view('plan.viewplan', compact('route','date','trucks','drivers','enddate','time','loading','product','maxloads','clientname'));
+        return view('plan.viewplan', compact('route','date','trucks','drivers','enddate','time','loading','product','maxloads','clientname','producttype'));
 
     }
 
@@ -1364,7 +1378,7 @@ class PlanningController extends Controller
         $trucks = DB::table('plandetails')
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name' ,'drivers.checkcode','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
         $routes = Route::all();
@@ -1409,7 +1423,7 @@ class PlanningController extends Controller
         $trucks = DB::table('plandetails')
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.checkcode','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
         $routes = Route::all();
@@ -1423,9 +1437,7 @@ class PlanningController extends Controller
      */
     public function setplan(Request $request)
     {
-       // dd( ini_get('max_input_vars'));
-            // dd($request->input('truck_ids'),$request->input('nooftrips'), $request->clientname);
-             
+              
             $startDate = Carbon::parse($request->date);
             $endDate = Carbon::parse($request->enddate);
               
@@ -1453,6 +1465,7 @@ class PlanningController extends Controller
             'name' => $request->clientname,
             'enddate' => $request->enddate,
             'product' => $request->product,
+            'producttype' => $request->producttype,
             'maxloads' => $request->maxloads,
             'loadingNumber' => $request->loading,
             'routeId' => $request->route,
@@ -1554,7 +1567,7 @@ class PlanningController extends Controller
         $trucks = DB::table('plandetailshistories')
         ->join('assets', 'plandetailshistories.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetailshistories.driver_id', '=', 'drivers.id')  // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetailshistories.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname',  'assets.model', 'assets.licenseNumber','plandetailshistories.date', 'plandetailshistories.route', 'plandetailshistories.trips')
+        ->select('plandetailshistories.truck', 'assets.registration', 'assets.make' ,'drivers.checkcode', 'drivers.name','drivers.surname',  'assets.model', 'assets.licenseNumber','plandetailshistories.date', 'plandetailshistories.route', 'plandetailshistories.trips')
         ->get();
 
      $routes = Route::all();
@@ -1577,7 +1590,7 @@ class PlanningController extends Controller
         $trucks = DB::table('plandetails')
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck','assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->select('plandetails.truck','assets.registration', 'assets.make', 'drivers.name','drivers.checkcode','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
      $routes = Route::all();
@@ -1600,7 +1613,7 @@ class PlanningController extends Controller
         $trucks = DB::table('plandetails')
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->select('plandetails.truck', 'assets.registration', 'assets.make', 'drivers.name','drivers.checkcode','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->get();
 
        $routes = Route::all();
@@ -1622,7 +1635,7 @@ class PlanningController extends Controller
         ->where('plan_id',$id)
         ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
         ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') 
-        ->select('plandetails.truck', 'assets.registration','assets.regNumber1','assets.regNumber2', 'assets.make', 'drivers.name', 'drivers.licenseNumber','drivers.surname', 'assets.model','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        ->select('plandetails.truck', 'assets.registration','assets.regNumber1','assets.regNumber2', 'assets.make','drivers.checkcode', 'drivers.name', 'drivers.licenseNumber','drivers.surname', 'assets.model','plandetails.date', 'plandetails.route', 'plandetails.trips')
         ->groupby('plandetails.truck')
         ->get();
 

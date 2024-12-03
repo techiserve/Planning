@@ -16,6 +16,7 @@ class Plan extends Model
         'routeId',
         'product',
         'maxloads',
+        'producttype',
         'loadingNumber',
         'date',
         'enddate',

@@ -73,6 +73,13 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
+                                                                <label class="form-label">Fuel Consumption</label>                                              
+                                                                <input type="text"  id="consumption"  name="consumption" value="{{ old('consumption') }}"  class="form-control">
+                                                                                                                      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
                                                                 <label class="form-label">Category</label>
                                                                                 <div class="input-group mb-3">
                                                                         

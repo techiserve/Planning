@@ -174,6 +174,23 @@
                     </div>
                 </div>
 
+
+                       <!-- Row 3: Max Loads and Product -->
+                       <div class="row">
+                    <div class="col-md-6">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-auto">
+                                <div class="fw-bold">Prodcut Type:</div>
+                                <p class="sub-title mb-0">{{ $producttype }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+             
+                 
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -311,6 +328,7 @@
                                             <input class="form-control" name="loading" value="{{$loading}}" type="hidden">
                                             <input class="form-control" name="maxloads" value="{{$maxloads}}" type="hidden">
                                             <input class="form-control" name="clientname" value="{{$clientname}}" type="hidden">
+                                            <input class="form-control" name="producttype" value="{{$producttype}}" type="hidden">
                                             <input class="form-control" name="route" value="{{$route->id }}" type="hidden">
                                             </div>
                                     </div>  
