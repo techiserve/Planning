@@ -51,6 +51,7 @@ class DriverController extends Controller
         $userrole->licenseExpireDate = $request->licenseExpireDate;
         $userrole->licenseNumber =  $request->licenseNumber;
         $userrole->vehicleType = $request->vehicleType;
+        $userrole->checkcode = $request->checkcode;
         $userrole->createdBy = $user->name;
         $userrole->save();
 
