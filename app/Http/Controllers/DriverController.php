@@ -39,7 +39,7 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-     //   dd($request->gender,$request->routeType);
+     
         $user = auth()->user();
         $userrole = new Driver();
         $userrole->name = $request->name;
@@ -56,6 +56,7 @@ class DriverController extends Controller
         $userrole->save();
 
         if($userrole){
+
             return redirect()->route('drivers.create')->with('success', 'Driver created successfully!');
         }
           return redirect()->route('drivers.create')->with('error', 'Failed to create Driver!');

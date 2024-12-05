@@ -1166,8 +1166,7 @@ class PlanningController extends Controller
     public function planupdate(Request $request, $id)
     {
     
-     //   dd($request->all());
-
+   
         $startDate = Carbon::parse($request->date);
         $endDate = Carbon::parse($request->enddate);
           
@@ -1216,7 +1215,7 @@ class PlanningController extends Controller
         $times = $request->input('times');
         $status = $request->input('status');
 
-        
+         if($truck_ids){
 
             foreach($truck_ids as $key => $n ) {
               //  dd($n);
@@ -1266,9 +1265,11 @@ class PlanningController extends Controller
             }
 
         }
+
+        }
                
      
-                if($companyrole){
+                if($createplan){
 
                     return back()->with('success', 'Plan updated successfully!');
                 }
