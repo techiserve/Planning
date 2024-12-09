@@ -43,13 +43,13 @@
                         @foreach ($drivers as $asset)                                         
                         <tr>
                             <td class="checkbox-column"> 1 </td>
-                            <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->name }}</span></a></td>
+                            <td><span class="">{{ $asset->name }}</span></td>
                          
-                            <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->surname }}</p></span></td>
+                            <td><span class=""> <p class="align-self-center mb-0 user-name">{{ $asset->surname }}</p></span></td>
                             
                                                                   
                             <td>
-                            <span class="inv-amount">{{ $asset->licenseNumber }}</span>
+                            <span class="">{{ $asset->licenseNumber }}</span>
                            </td>  
                  
                             <td>@if ($asset->status == 1)

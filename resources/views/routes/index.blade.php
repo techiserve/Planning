@@ -43,14 +43,14 @@
                     <tbody>
                         @foreach ($routes as $asset)                                         
                         <tr>
-                            <td class="checkbox-column"> 1 </td>
-                            <td><a href="./app-invoice-preview.html"><span class="inv-number">Sobotshane</span></a></td>
+                            <td class=""> 1 </td>
+                            <td><span class="">Sobotshane</span></td>
                          
-                            <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->contractId }}</p></span></td>
-                            <td><span class="inv-email"> {{ $asset->distance }}</span></td>
-                            <td> <span class="inv-amount">{{ $asset->from }}</span> </td>                                              
+                            <td><span class=""> <p class="align-self-center mb-0 user-name">{{ $asset->contractId }}</p></span></td>
+                            <td><span class=""> {{ $asset->distance }}</span></td>
+                            <td> <span class="">{{ $asset->from }}</span> </td>                                              
                             <td>
-                            <span class="inv-amount">{{ $asset->to }}</span>
+                            <span class="">{{ $asset->to }}</span>
                            </td>  
                             <td>
                                 <a class="badge badge-light-primary text-start me-2 action-edit" href="/routes/edit/{{$asset->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
