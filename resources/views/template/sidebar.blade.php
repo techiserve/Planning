@@ -21,7 +21,7 @@
                 <ul class="list-unstyled menu-categories" id="accordionExample">
                   
                     <li class="menu menu-heading">
-                        <div class="heading"><span>SIC Modules</span></div>
+                        <div class="heading"><span style="color: blue;">SIC Modules</span></div>
                     </li>
 
                     
@@ -56,7 +56,7 @@
                  
                     <li class="menu">
                     <li class="menu menu-heading">
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>Enablers Modules</span></div>
+                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span style="color: blue;">Enablers Modules</span></div>
                     </li>
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
                     <!-- Asset Management -->
@@ -181,7 +181,7 @@
 
                     @if(Auth::user()->userRole == 1 )
                     <li class="menu menu-heading">
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>Users</span></div>
+                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span style="color: blue;">Users</span></div>
                     </li>
 
                    
