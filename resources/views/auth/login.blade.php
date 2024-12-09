@@ -10,6 +10,9 @@
             margin: 30px;
             width: 600px;
         }
+        .logo-image {
+        margin-top: -80px; /* Adjust the negative value as needed */
+    }
     </style>
 @section('content')
     <div id="load_screen"> <div class="loader"> <div class="loader-content">
@@ -46,8 +49,8 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
 
-                                <img src="{!! asset('template/src/assets/img/logo.png') !!}" alt="Description of the image">
-    </br>                                    
+                                <img src="{!! asset('template/src/assets/img/logo.png') !!}" alt="Description of the image" class="logo-image">
+    </br>   </br>    </br>    </br>    </br>    </br>    </br>                                     
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
