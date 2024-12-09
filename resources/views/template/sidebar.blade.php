@@ -1,4 +1,4 @@
-  <div class="sidebar-wrapper sidebar-theme" style="background-color:#EEF0E5;">
+  <div class="sidebar-wrapper sidebar-theme" >
             
             <nav id="sidebar" >
 
@@ -6,7 +6,7 @@
                     <div class="nav-logo">
                         <div class="nav-item theme-logo">
                             <a href="#">
-                                <img src="{!! asset('template/src/assets/img/logo.jpg') !!}" class="img-fluid me-2" alt="logo">
+                                <img src="{!! asset('template/src/assets/img/sobo.png') !!}" class="img-fluid me-2" alt="logo">
                             </a>
                         </div>
                         <div class="nav-item theme-text">

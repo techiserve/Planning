@@ -46,7 +46,7 @@
                         <tr>
                             <td class="checkbox-column"> 1 </td>
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->licenseNumber }}</p></span></td>
-                            <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->registration }}</span></a></td>
+                            <td><span class="inv-number">{{ $asset->registration }}</span></td>
                          
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->make }}</p></span></td>
                             <td><span class="inv-email"> {{ $asset->model }}</span></td>

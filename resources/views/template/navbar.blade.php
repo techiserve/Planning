@@ -13,7 +13,7 @@
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
                             <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="{!! asset('template/src/assets/img/logo.jpg') !!}" class="img-fluid me-2">
+                                <img alt="avatar" src="{!! asset('template/src/assets/img/avatar1.jpg') !!}" class="img-fluid me-2">
                             </div>
                         </div>
                     </a>
