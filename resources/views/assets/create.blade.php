@@ -53,7 +53,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Asset Number</label>
-                                                                <input type="text" name="registration" class="form-control">
+                                                                <input type="text" name="licenseNumber"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-4">
@@ -77,7 +77,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Registration Number</label>
-                                                                <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">
+                                                                <input type="text" name="registration"  name="licenseNumber"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
                                                    
