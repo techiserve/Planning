@@ -72,14 +72,14 @@
                                                                 <div class="form-group row">
                                                                     <label for="company-email" class="col-sm-3 col-form-label col-form-label-sm">Asset #</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="registration" id="company-email" placeholder="" value="{{$asset->licenseNumber}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="company-email" placeholder="" value="{{$asset->licenseNumber}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Asset Type</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="assetType" id="company-address" placeholder="" value="{{$asset->model}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="model" id="company-address" placeholder="" value="{{$asset->model}}">
                                                                     </div>
                                                                 </div>
     
@@ -114,14 +114,14 @@
                                                                 <div class="form-group row">
                                                                     <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Reg Number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="model" id="client-name" placeholder="" value="{{$asset->registration}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="registration" id="client-name" placeholder="" value="{{$asset->registration}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm"> License Exp Date</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="date" class="form-control form-control-sm" name="weight" id="client-email" placeholder="" value="{{$asset->registrationExpireDate}}">
+                                                                        <input type="date" class="form-control form-control-sm" name="registrationExpireDate" id="client-email" placeholder="" value="{{$asset->registrationExpireDate}}">
                                                                     </div>
                                                                 </div>
       
