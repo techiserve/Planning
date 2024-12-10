@@ -21,8 +21,8 @@
                 <ul class="list-unstyled menu-categories" id="accordionExample">
                   
                 <li class="menu menu-heading">
-                    <div class="heading" style="background-color: lightgray; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 50px 10px 10px;border-radius: 5%;">
-                        <span style="color: white;">SIC Modules</span>
+                    <div class="heading" style="background-color: #7E7B7F; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 85px 10px 10px;border-radius: 15px 15px 15px 15px;">
+                        <span style="color: white;font-size:15px;">SIC Modules</span>
                     </div>
                 </li>
 
@@ -58,8 +58,10 @@
                  
                     <li class="menu">
                     <li class="menu menu-heading">
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span style="color: blue;">Enablers Modules</span></div>
-                    </li>
+                    <div class="heading" style="background-color: #7E7B7F; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 50px 10px 10px;border-radius: 15px 15px 15px 15px;">
+                        <span style="color: white;font-size:15px;">Enablers Modules</span>
+                    </div>
+                </li>
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
                     <!-- Asset Management -->
                     <li class="menu">
@@ -183,8 +185,10 @@
 
                     @if(Auth::user()->userRole == 1 )
                     <li class="menu menu-heading">
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span style="color: blue;">Users</span></div>
-                    </li>
+                    <div class="heading" style="background-color: #7E7B7F; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 130px 10px 10px;border-radius: 15px 15px 15px 15px;">
+                        <span style="color: white;font-size:15px;">Users</span>
+                    </div>
+                </li>
 
                    
                     <!-- User Management -->
