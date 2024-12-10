@@ -20,9 +20,11 @@
 
                 <ul class="list-unstyled menu-categories" id="accordionExample">
                   
-                    <li class="menu menu-heading">
-                        <div class="heading"><span style="color: blue;">SIC Modules</span></div>
-                    </li>
+                <li class="menu menu-heading">
+                    <div class="heading" style="background-color: lightgray; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 50px 10px 10px;border-radius: 5%;">
+                        <span style="color: white;">SIC Modules</span>
+                    </div>
+                </li>
 
                     
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2 || Auth::user()->userRole == 3)

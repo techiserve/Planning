@@ -102,6 +102,14 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
+        $checkuser = User::where('email', $request->email)->first();
+
+        if($checkuser){
+          
+            return redirect()->route('users.create')->with('warning', 'User already exisits!');
+          
+        }
+
         $userrole = new User();
         $userrole->name = $request->name;
         $userrole->userName = $request->userName;
