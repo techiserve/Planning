@@ -16,6 +16,9 @@
                                     <p class="w-stats" style="font-size:17px;">158</p>
                                     </div>
                                 </div>
+                                <div class="logo-container" style="text-align: center; margin: -90px 0 10px 0;">
+                                    <img alt="avatar" src="{!! asset('template/src/assets/img/truck.png') !!}" style="width: 100px; height: auto;">
+                                </div>
                                 <div class="w-chart">
                                     <div class="">
                                         <div class="w-detail">
@@ -48,6 +51,9 @@
                                     <div class="task-action">
                                     <p class="w-stats" style="font-size:17px;">47</p>
                                     </div>
+                                </div>
+                                <div class="logo-container" style="text-align: center; margin: -90px 0 10px 0;">
+                                    <img alt="avatar" src="{!! asset('template/src/assets/img/route.png') !!}" style="width: 180px; height: auto;">
                                 </div>
                                 <div class="w-chart">
                                     <div class="">
@@ -82,6 +88,9 @@
                                     <div class="task-action">
                                     <p class="w-stats" style="font-size:17px;">2</p>
                                     </div>
+                                </div>
+                                <div class="logo-container" style="text-align: center; margin: -90px 0 10px 0;">
+                                    <img alt="avatar" src="{!! asset('template/src/assets/img/plan.png') !!}" style="width: 180px; height: auto;">
                                 </div>
                                 <div class="w-chart">
                                     <div class="">
