@@ -7,6 +7,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\PlanningController;
+use App\Http\Controllers\TruckController;
 use App\Http\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
@@ -134,6 +135,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/plan/planindex', [PlanningController::class, 'planindex'])->name('plan.planindex');
     Route::get('/plan/editplan/{id}', [PlanningController::class, 'editplan'])->name('plan.editplan');
     Route::put('/plan/planupdate/{id}', [PlanningController::class, 'planupdate'])->name('plan.planupdate');
+    Route::post('/import-trucks', [TruckController::class, 'import'])->name('import.trucks');
 
 
     Route::delete('/planning/editroutemonthlyplandriver/{id}', [PlanningController::class, 'editroutemonthlyplandriver'])->name('assignments.editroutemonthlyplandriver');

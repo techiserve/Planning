@@ -50,7 +50,7 @@
                                 <div class="col-md-12 mb-3">
 
                                 <img src="{!! asset('template/src/assets/img/logo2.png') !!}" alt="Description of the image" class="logo-image">
-    </br>   </br>    </br>    </br>    </br>    </br>    </br>                                     
+    </br>   </br>    </br>    </br>                                       
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
