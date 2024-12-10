@@ -13,7 +13,7 @@
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Trucks</h6>
                                     <div class="task-action">
-                                    <p class="w-stats" style="font-size:20px;">158</p>
+                                    <p class="w-stats" style="font-size:17px;">158</p>
                                     </div>
                                 </div>
                                 <div class="w-chart">
@@ -46,7 +46,7 @@
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Routes</h6>
                                     <div class="task-action">
-                                    <p class="w-stats" style="font-size:20px;">47</p>
+                                    <p class="w-stats" style="font-size:17px;">47</p>
                                     </div>
                                 </div>
                                 <div class="w-chart">
@@ -80,7 +80,7 @@
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Plans</h6>
                                     <div class="task-action">
-                                    <p class="w-stats" style="font-size:20px;">2</p>
+                                    <p class="w-stats" style="font-size:17px;">2</p>
                                     </div>
                                 </div>
                                 <div class="w-chart">
