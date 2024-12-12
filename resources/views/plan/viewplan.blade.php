@@ -79,6 +79,9 @@
     font-size: 15px;
 }
 </style>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" disabled>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" defer></script>
+
 @section('content')
 <div id="content" class="main-content ">
 
@@ -202,20 +205,7 @@
                             <!--  -->
 
                             <div class="row">
-                                    <div class="col-xl-4 col-lg-5 col-md-5 col-sm-7 filtered-list-search layout-spacing align-self-center">
-                                        <form class="form-inline my-2 my-lg-0">
-                                            <div class="">
-                                                <input type="text" class="form-control product-search" id="input-search" placeholder="Search Trucks...">
-                                            </div>
-                                        </form>
-                                    </div>
-    
-                                    <div class="col-xl-8 col-lg-7 col-md-7 col-sm-5 text-sm-right text-center layout-spacing align-self-center">
-                                        <div class="d-flex justify-content-sm-end justify-content-center">
-                                            <!-- <button type="submit" class="btn btn-primary" >Confirm Plan</button>  -->
-                                         
-                                        </div>
-    
+                                    
                                     
                                     </div>
                                 </div>
@@ -227,140 +217,166 @@
                               <form action="/plan/setplan" method="POST">
                             @csrf
 
-                                <div class="searchable-items list">
-                                    <div class="items items-header-section">
-                                        <div class="item-content">
-                                            <div class="d-inline-flex">
-                                                <div class="n-chk align-self-center text-center">
-                                                    <div class="form-check form-check-primary me-0 mb-0">
-                                                        <input class="form-check-input inbox-chkbox" id="contact-check-all" type="checkbox">
-                                                    </div>
-                                                </div>
-                                                <h4 style="text-align: left; margin-left: 10;" >Make</h4>
-                                            </div>
-                                            
-                                            <div class="user-email">
-                                                <h4  style="text-align: left; margin-left: 3;">Asset Number</h4>
-                                            </div>
-                                            <div class="user-registration">
-                                                <h4 style="margin-left: 0;">Registration</h4>
-                                            </div>
-                                            <div class="user-phone">
-                                                <h4 style="margin-left: 3px;">Number of Loads</h4>
-                                            </div>                                        
-                                            <div class="action-btn">
-                                            <h4 style="margin-left: 3px;">Time</h4>
-                                            </div>
-                                            <div class="user-status">
-                                            <h4 style="margin-left: 3px;">Status</h4>
-                                        </div>
-                                        <div class="new-column">
-                                            <h4 style="margin-left: 3px;">Driver</h4>
-                                        </div>
-                                        </div>
-                                    </div>
-    
-                                    @foreach($trucks as $truck)
-                                    <div class="items">
-                                        <div class="item-content">
-                                            <div class="user-profile">
-                                                <div class="n-chk align-self-center text-center">
-                                                    <div class="form-check form-check-primary me-0 mb-0">
-                                                        <input class="form-check-input inbox-chkbox contact-chkbox truck-checkbox" name="truck_ids[]" value="{{ $truck->id }}" type="checkbox">
-                                                    </div>
-                                                </div>
-
-             
-                                                <div class="user-meta-info">
-                                                    <p class="user-name" data-name="Alan Green">{{$truck->make}}</p>
-                                                    <p class="user-work" data-occupation="Web Developer">{{$truck->model}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="user-email">
-                                                <p class="info-title">Email: </p>
-                                                <p class="usr-email-addr" data-email="alan@mail.com">{{$truck->licenseNumber}}</p>
-                                            </div>
-                                            <div class="user-location">
-                                                <p class="info-title">Registration: </p>
-                                                <p class="usr-location" data-location="Boston, USA">{{$truck->registration}}</p>
-                                            </div>
-                                            <div class="user-phone">
-                                                <p class="info-title">Phone: </p>
-                                                <input class="form-control" name="nooftrips[]" type="number"  id="nooftrips-{{ $truck->id }}" value="{{ $maxloads }}" disabled>
-                                            </div>
-                                           
-                                            <div class="action-btn">
-                                            <input class="form-control" name="times[]" type="time" id="times-{{ $truck->id }}" value="{{ $time }}" disabled>
-                                            </div>
-                                            <div class="user-status">
-                                       
-                                          <select name="status[]"  id="status-{{ $truck->id }}" class="form-select" disabled>
-
-                                            @if ($truck->status == 1)
-                                            <option value="1">Available</option> 
-                                            @elseif ($truck->status == 2)
-                                            <option value="2">Unavailable</option> 
-                                            <option value="1">Available</option> 
-                                            @else
-                                            <option value="" selected>Choose Status</option>
-                                            <option value="1">Available</option> 
-                                            <option value="2">Unvailable</option>    
-                                            @endif
-
-                                                                                                                                                                                                                                                                                            
-                                            </select>                        
-                                            </div>
-                                            <div class="new-column">
-                                            <select class="form-control" name="driver[]"  id="driver-{{ $truck->id }}" disabled>
-                                                <option value="" disabled selected>Select Driver</option>
-                                                @foreach ($truck->drivers as $driver)
-                                                    @foreach ($drivers as $dr)     
-                                                    @if($dr->id == $driver->driver_id)
-                                                    <option value="{{ $dr->id }}">{{ $dr->name }} {{ $dr->surname}}</option>     
-                                                    @endif                                                                     
-                                                    @endforeach
-                                                @endforeach
-                                            </select>
-                                            </div>
-                                            <input class="form-control" name="date" value="{{$date->format('Y-m-d') }}" type="hidden">
-                                            <input class="form-control" name="enddate" value="{{$enddate->format('Y-m-d')}}" type="hidden">
-                                            <input class="form-control" name="product" value="{{$product }}" type="hidden">
-                                            <input class="form-control" name="loading" value="{{$loading}}" type="hidden">
-                                            <input class="form-control" name="maxloads" value="{{$maxloads}}" type="hidden">
-                                            <input class="form-control" name="clientname" value="{{$clientname}}" type="hidden">
-                                            <input class="form-control" name="producttype" value="{{$producttype}}" type="hidden">
-                                            <input class="form-control" name="route" value="{{$route->id }}" type="hidden">
-                                            </div>
-                                    </div>  
-                                    @endforeach                                    
-    
-                            </div>
+                            <div class="table-responsive">
+       <table  id="assetsTable" class="table table-bordered ">
+        <thead class="table-primary">
+            <tr>
+                <th class="text-center">
+                    <div class="form-check form-check-primary me-0 mb-0">
+                        <input class="driver-checkbox" id="select-all" type="checkbox">
+                    </div>
+                </th>
+                <th>Make</th>
+                <th>Asset Number</th>
+                <th>Registration</th>
+                <th>Number of Loads</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Driver</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($trucks as $truck)
+                <tr>
+                    <td class="text-center">
+                        <div class="form-check form-check-primary me-0 mb-0">
+                            <input class="asset driver-checkbox" name="truck_ids[]" value="{{ $truck->id }}" type="checkbox">
                         </div>
-                    </div>
+                    </td>
+                    <td>
+                        <p class="user-name">{{$truck->make}}</p>
+                        <p class="user-work">{{$truck->model}}</p>
+                    </td>
+                    <td>
+                        <p class="usr-email-addr">{{$truck->licenseNumber}}</p>
+                    </td>
+                    <td>
+                        <p class="usr-location">{{$truck->registration}}</p>
+                    </td>
+                    <td>
+                        <input class="form-control" name="nooftrips[]" type="number" id="nooftrips-{{ $truck->id }}" value="{{ $maxloads }}" disabled>
+                    </td>
+                    <td>
+                        <input class="form-control" name="times[]" type="time" id="times-{{ $truck->id }}" value="{{ $time }}" disabled>
+                    </td>
+                    <td>
+                        <select name="status[]" id="status-{{ $truck->id }}" class="form-select" disabled>
+                            @if ($truck->status == 1)
+                                <option value="1">Available</option>
+                            @elseif ($truck->status == 2)
+                                <option value="2">Unavailable</option>
+                                <option value="1">Available</option>
+                            @else
+                                <option value="" selected>Choose Status</option>
+                                <option value="1">Available</option>
+                                <option value="2">Unavailable</option>
+                            @endif
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" name="driver[]" id="driver-{{ $truck->id }}" disabled>
+                            <option value="" disabled selected>Select Driver</option>
+                            @foreach ($truck->drivers as $driver)
+                                @foreach ($drivers as $dr)
+                                    @if($dr->id == $driver->driver_id)
+                                        <option value="{{ $dr->id }}">{{ $dr->name }} {{ $dr->surname}}</option>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                        </select>
+                    </td>
+                </tr>
+                <input type="hidden" name="date" value="{{$date->format('Y-m-d') }}">
+                <input type="hidden" name="enddate" value="{{$enddate->format('Y-m-d')}}">
+                <input type="hidden" name="product" value="{{$product}}">
+                <input type="hidden" name="loading" value="{{$loading}}">
+                <input type="hidden" name="maxloads" value="{{$maxloads}}">
+                <input type="hidden" name="clientname" value="{{$clientname}}">
+                <input type="hidden" name="producttype" value="{{$producttype}}">
+                <input type="hidden" name="route" value="{{$route->id}}">
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-                    <div class="d-flex justify-content-sm-end justify-content-center">
-                        <button type="submit" class="btn btn-primary" >Confirm Plan</button>                                       
-                    </div>
-    
-                    </form>
+<div class="d-flex justify-content-sm-end justify-content-center">
+    <button type="submit" class="btn btn-primary">Confirm Plan</button>
+</div>
+
+ </form>
 
                                
 </div>
 </div>
 </div>
 @endsection
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
 <script>
-    // JavaScript to toggle all checkboxes
-    document.getElementById('contact-check-all').addEventListener('change', function() {
-        var checkboxes = document.querySelectorAll('.truck-checkbox');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = document.getElementById('contact-check-all').checked;
+$(document).ready(function() {
+    // Select All checkbox functionality
+    $('#select-all').on('change', function() {
+        var isChecked = $(this).is(':checked');
+
+        // Check/uncheck all individual checkboxes
+        $('.driver-checkbox:not(#select-all)').prop('checked', isChecked);
+
+        $('.driver-checkbox:not(#select-all)').each(function() {
+            var $row = $(this).closest('tr');
+            
+            // Enable/disable form fields and ensure checkbox is checked/unchecked
+            $row.find('input:not(.driver-checkbox), select').prop('disabled', !isChecked);
         });
     });
+
+    // Individual checkbox change event
+    $('.driver-checkbox:not(#select-all)').on('change', function() {
+        var $row = $(this).closest('tr');
+        var isChecked = $(this).is(':checked');
+
+        // Disable/enable form fields in the row, excluding the checkbox
+        $row.find('input:not(.driver-checkbox), select').prop('disabled', !isChecked);
+
+        // Update "Select All" checkbox if not all rows are checked
+        var allChecked = $('.driver-checkbox:not(#select-all)').length === 
+                         $('.driver-checkbox:not(#select-all):checked').length;
+        $('#select-all').prop('checked', allChecked);
+    });
+});
+
 </script>
 
 
+<script>
+$(document).ready(function() {
+    // Check if DataTables is available
+    function initDataTables() {
+        if ($.fn.DataTable) {
+            $('#assetsTable').DataTable({
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "pageLength": 50,
+                "processing": false,
+                "deferRender": true
+            });
+        } else {
+            console.warn('DataTables not loaded');
+        }
+    }
+
+    // If DataTables script is already loaded
+    if ($.fn.DataTable) {
+        initDataTables();
+    } else {
+        // Dynamically load DataTables
+        $('link[disabled]').prop('disabled', false);
+        $.getScript('https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js', initDataTables);
+    }
+});
+</script>
 
 
 

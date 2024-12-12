@@ -97,7 +97,6 @@
     <script src="{!! asset('template/src/plugins/src/mousetrap/mousetrap.min.js') !!}"></script>
     
     <script src="{!! asset('template/src/assets/js/custom.js') !!}"></script>
-    <script src="{!! asset('template/src/plugins/src/apex/apexcharts.min.js') !!}"></script>
     <script src="{!! asset('template/src/assets/js/dashboard/dash_1.js') !!}"></script>
     <script src="{!! asset('template/src/plugins/src/table/datatable/datatables.js') !!}"></script>
 
@@ -123,53 +122,7 @@
     <script src="{!! asset('template/src/plugins/src/tomSelect/tom-select.base.js') !!}"></script>
     <script src="{!! asset('template/src/plugins/src/tomSelect/custom-tom-select.js') !!}"></script>
 
-    <script>
-$(document).ready(function() {
-    // Function to enable or disable fields based on checkbox status
-    function toggleFields(truckId, isChecked) {
-        $('#nooftrips-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#nooftrips-' + truckId).val() : '');
-        $('#shifts-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#shifts-' + truckId).val() : '');
-        $('#times-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#times-' + truckId).val() : '');
-        $('#status-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#status-' + truckId).val() : '');
-        $('#driver-' + truckId).prop('disabled', !isChecked).attr('required', isChecked ? 'required' : false).val(isChecked ? $('#driver-' + truckId).val() : '');
-
-        // Initialize flatpickr time picker only when checkbox is checked
-        if (isChecked) {
-            flatpickr(document.getElementById('times-' + truckId), {
-                enableTime: true,
-                noCalendar: true,
-                dateFormat: "H:i",
-                time_24hr: true // 24-hour format
-            });
-        }
-    }
-
-    // When a single checkbox is checked or unchecked
-    $('.truck-checkbox').on('change', function() {
-        var truckId = $(this).val();
-        toggleFields(truckId, $(this).is(':checked'));
-    });
-
-    // Select All functionality
-    $('#contact-check-all').on('change', function() {
-        var isChecked = $(this).is(':checked');
-        
-        // Check or uncheck all individual checkboxes
-        $('.truck-checkbox').prop('checked', isChecked).trigger('change');
-    });
-
-    // Initialize flatpickr for all time inputs by default (if needed)
-    $('input[name="times[]"]').each(function() {
-        flatpickr(this, {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            time_24hr: true // 24-hour format
-        });
-    });
-});
-</script>
-
+ 
 
     <script type="text/javascript">
                                               function deleteConfirmation(id) {
