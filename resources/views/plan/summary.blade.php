@@ -63,7 +63,7 @@
                             <th>Loading Number</th>
                             <th>Total Trips</th>
                             <th>Total Trucks</th>
-                            <th>Actions</th>
+                          
                         </tr>
                     </thead>
                     
@@ -78,56 +78,7 @@
                             <td><span class="in-status">{{ $details->loadingNumber }}</span></td> 
                             <td><span class="inv-email"> {{ $details->total_trips }}</span></td>
                             <td><span class="in-status">{{ $details->total_trucks }}</span></td>                                                                                                   
-                            <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#truckModal-{{ $loop->index }}">
-                             View Trucks
-                            </button>   
                             
-                                       <!-- Modal -->
-                    <div class="modal fade" id="truckModal-{{ $loop->index }}" tabindex="-1" aria-labelledby="truckModalLabel-{{ $loop->index }}" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="truckModalLabel-{{ $loop->index }}">Trucks for {{ $details->date }} ({{ $details->route }})</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Truck</th>
-                                                <th>Make</th>
-                                                <th>Model</th>
-                                                <th>License Number</th>
-                                                <th>Driver Name</th>
-                                               
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($trucks as $truck)
-                                                @if($truck->date == $details->date && $truck->route == $details->route)
-                                                <tr>
-                                                    <td>{{ $truck->registration }}</td>
-                                                    <td>{{ $truck->make }}</td>
-                                                    <td>{{ $truck->model }}</td>
-                                                    <td>{{ $truck->licenseNumber }}</td>
-                                                    <td>{{ $truck->name }} {{ $truck->surname }}</td>
-                                                </tr>
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>

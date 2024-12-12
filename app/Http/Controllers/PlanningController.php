@@ -1443,7 +1443,7 @@ class PlanningController extends Controller
        
 
         
-        dd($request->input('truck_ids'),$request->input('driver'));
+       // dd($request->all());
         
         //timeout
             $startDate = Carbon::parse($request->date);
@@ -1601,15 +1601,15 @@ class PlanningController extends Controller
         ->groupBy('plandetails.date', 'plandetails.route','plans.product','plans.loadingNumber','plandetails.plan_id')
         ->get();
 
-        $trucks = DB::table('plandetails')
-        ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
-        ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
-        ->select('plandetails.truck','assets.registration', 'assets.make', 'drivers.name','drivers.checkcode','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
-        ->get();
+        // $trucks = DB::table('plandetails')
+        // ->join('assets', 'plandetails.truck', '=', 'assets.licenseNumber')
+        // ->join('drivers', 'plandetails.driver_id', '=', 'drivers.id') // 'assets' table has 'registration' field matching 'truck'
+        // ->select('plandetails.truck','assets.registration', 'assets.make', 'drivers.name','drivers.checkcode','drivers.surname', 'assets.model', 'assets.licenseNumber','plandetails.date', 'plandetails.route', 'plandetails.trips')
+        // ->get();
 
      $routes = Route::all();
          
-        return view('plan.activesummary', compact('planDetails','trucks','routes'));
+        return view('plan.activesummary', compact('planDetails','routes'));
     }
 
 

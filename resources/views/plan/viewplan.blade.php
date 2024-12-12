@@ -286,14 +286,14 @@
                         </select>
                     </td>
                 </tr>
-                <input type="hidden" name="date" value="{{$date->format('Y-m-d') }}">
-                <input type="hidden" name="enddate" value="{{$enddate->format('Y-m-d')}}">
-                <input type="hidden" name="product" value="{{$product}}">
-                <input type="hidden" name="loading" value="{{$loading}}">
-                <input type="hidden" name="maxloads" value="{{$maxloads}}">
-                <input type="hidden" name="clientname" value="{{$clientname}}">
-                <input type="hidden" name="producttype" value="{{$producttype}}">
-                <input type="hidden" name="route" value="{{$route->id}}">
+                <input type="text" name="date" value="{{$date->format('Y-m-d') }}" style="display: none;">
+                <input type="text" name="enddate" value="{{$enddate->format('Y-m-d')}}" style="display: none;">
+                <input type="text" name="product" value="{{$product}}" style="display: none;">
+                <input type="text" name="loading" value="{{$loading}}" style="display: none;">
+                <input type="text" name="maxloads" value="{{$maxloads}}" style="display: none;">
+                <input type="text" name="clientname" value="{{$clientname}}" style="display: none;">
+                <input type="text" name="producttype" value="{{$producttype}}" style="display: none;">
+                <input type="text" name="route" value="{{$route->id}}" style="display: none;">
             @endforeach
         </tbody>
     </table>

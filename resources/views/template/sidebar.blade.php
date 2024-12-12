@@ -46,14 +46,14 @@
                                 <a href="/plan/changeassignment"> Change Assignments </a>
                             </li>    
                             <li>
-                                <a href="/plan/summary"> Summary </a>
+                                <a href="/plan/activesummary"> Summary </a>
                             </li>                  
                             <li>
                                 <a href="/plan/planindex"> Plans </a>
                             </li>   
                         </ul>
                     </li>
-                    
+
                     @endif
 
 
