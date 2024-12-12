@@ -28,7 +28,7 @@
 
                     
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2 || Auth::user()->userRole == 3)
-                    <!-- Planning Module -->
+
                     <li class="menu">                  
                         <a href="#plan" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
@@ -53,7 +53,9 @@
                             </li>   
                         </ul>
                     </li>
+                    
                     @endif
+
 
                  
                     <li class="menu">

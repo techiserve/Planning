@@ -1438,7 +1438,10 @@ class PlanningController extends Controller
      */
     public function setplan(Request $request)
     {
-              
+        set_time_limit(600);
+        ini_set('memory_limit', '1G'); // Sets memory limit to 1 Gigabyte
+       
+        //timeout
             $startDate = Carbon::parse($request->date);
             $endDate = Carbon::parse($request->enddate);
               
@@ -1555,6 +1558,8 @@ class PlanningController extends Controller
 
     public function summary()
     {
+        set_time_limit(600);
+        ini_set('memory_limit', '1G'); // Sets memory limit to 1 Gigabyte
        
         $planDetails = DB::table('plandetailshistories')
         ->join('plans', 'plandetailshistories.plan_id', '=', 'plans.id') 
@@ -1580,6 +1585,8 @@ class PlanningController extends Controller
 
     public function activesummary()
     {
+        set_time_limit(600);
+        ini_set('memory_limit', '1G'); // Sets memory limit to 1 Gigabyte
        
         $planDetails = DB::table('plandetails')
         ->where('plandetails.date', '>=', now()->format('Y-m-d'))
@@ -1603,6 +1610,8 @@ class PlanningController extends Controller
 
     public function todaysummary()
     {
+        set_time_limit(600);
+        ini_set('memory_limit', '1G'); // Sets memory limit to 1 Gigabyte
        
         $planDetails = DB::table('plandetails')
         ->where('plandetails.date', '=', now()->format('Y-m-d'))
