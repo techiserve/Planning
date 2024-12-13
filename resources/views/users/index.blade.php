@@ -21,7 +21,12 @@
                     </div>
                     <!-- /BREADCRUMB -->
 
-    
+          <!-- BUTTON ROW -->
+          <div class="d-flex justify-content-end mb-3">
+            <a href="/users/activitylog" class="btn btn-success btn-md">Download Audit Trail</a>
+        </div>
+        <!-- END BUTTON ROW -->
+
     <div class="row" id="cancel-row">
                     
         <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">

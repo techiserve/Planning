@@ -1441,9 +1441,6 @@ class PlanningController extends Controller
         set_time_limit(600);
         ini_set('memory_limit', '1G'); // Sets memory limit to 1 Gigabyte
        
-
-        
-       // dd($request->all());
         
         //timeout
             $startDate = Carbon::parse($request->date);
@@ -1493,7 +1490,7 @@ class PlanningController extends Controller
             $times = $request->input('times');
             $status = $request->input('status');
 
-          //  dd($truck_ids); 
+
 
                 foreach($truck_ids as $key => $n ) {
 

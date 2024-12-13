@@ -168,6 +168,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
+
     ])->toArray(),
 
     /*
@@ -183,6 +187,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Activity' => Spatie\Activitylog\Facades\Activity::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+
     ])->toArray(),
 
 ];

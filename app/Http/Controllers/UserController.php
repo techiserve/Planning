@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Alert;
+use App\Exports\LogsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -153,6 +155,11 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function activitylog()
+    {
+        return Excel::download(new LogsExport, 'activity_logs.xlsx');
     }
 
     /**

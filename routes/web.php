@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     //Users Routes
     Route::get('/users/parameters', [UserController::class, 'parameters'])->name('users.parameters');
     Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/activitylog', [UserController::class, 'activitylog'])->name('users.activitylog');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/fetchData', [UserController::class, 'fetchData'])->name('users.fetchData');
