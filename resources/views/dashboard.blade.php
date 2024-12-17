@@ -3,7 +3,15 @@
 @section('content')
  <div id="content" class="main-content">
             <div class="layout-px-spacing">
-
+            @php
+        use App\Models\Plan;
+        use App\Models\Asset;
+        use App\Models\Route;
+        $plansCount = Plan::count(); // Count directly in the view
+        $truckCount = Asset::count(); 
+        $routeCount = Route::count(); 
+        // Fetch all plans
+    @endphp
                 <div class="middle-content container-xxl p-0">
 
                     <div class="row layout-top-spacing">
@@ -13,7 +21,7 @@
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Trucks</h6>
                                     <div class="task-action">
-                                    <p class="w-stats" style="font-size:17px;">158</p>
+                                    <p class="w-stats" style="font-size:17px;">{{ $truckCount }}</p>
                                     </div>
                                 </div>
                                 <div class="logo-container" style="text-align: center; margin: -90px 0 10px 0;">
@@ -49,7 +57,7 @@
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Routes</h6>
                                     <div class="task-action">
-                                    <p class="w-stats" style="font-size:17px;">47</p>
+                                    <p class="w-stats" style="font-size:17px;">{{ $routeCount }}</p>
                                     </div>
                                 </div>
                                 <div class="logo-container" style="text-align: center; margin: -90px 0 10px 0;">
@@ -79,14 +87,14 @@
                             </div>
                             
                         </div>
-                        
+   
 
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-six">
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Plans</h6>
                                     <div class="task-action">
-                                    <p class="w-stats" style="font-size:17px;">2</p>
+                                    <p class="w-stats" style="font-size:17px;">{{ $plansCount }}</p>
                                     </div>
                                 </div>
                                 <div class="logo-container" style="text-align: center; margin: -90px 0 10px 0;">
