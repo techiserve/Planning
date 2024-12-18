@@ -116,6 +116,7 @@
         // Initialize DataTable
         $('#driversTable').DataTable({
             "paging": true,
+            "pageLength": 25,
             "searching": true,
             "ordering": true,
             "info": true
