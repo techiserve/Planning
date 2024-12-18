@@ -100,7 +100,7 @@ class AssetController extends Controller
         
         $drivers = Driver::whereIn('id', $request->driver_ids)->get();     
         
-        $removeEverything = Assetdriver::where('asset_id', $request->asset)->delete();
+       // $removeEverything = Assetdriver::where('asset_id', $request->asset)->delete();
 
         if($drivers){
 
