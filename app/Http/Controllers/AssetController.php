@@ -90,8 +90,14 @@ class AssetController extends Controller
     public function assignDrivers(request $request)
     {
 
-       // dd($request->all());
+        //dd($request->driver_ids);
+        if(!$request->driver_ids){
+          
+            return back()->with('warning', 'You did not select a driver!');
 
+        }
+
+        
         $drivers = Driver::whereIn('id', $request->driver_ids)->get();     
         
         $removeEverything = Assetdriver::where('asset_id', $request->asset)->delete();
