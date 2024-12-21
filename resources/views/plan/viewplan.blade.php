@@ -358,7 +358,7 @@ $(document).ready(function() {
                 "searching": true,
                 "ordering": true,
                 "info": true,
-                "pageLength": 50,
+                "pageLength": 200,
                 "processing": false,
                 "deferRender": true
             });
