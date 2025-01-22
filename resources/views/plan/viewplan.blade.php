@@ -274,7 +274,7 @@
                         </select>
                     </td>
                     <td>
-                        <select class="form-control" name="driver[]" id="driver-{{ $truck->id }}" disabled>
+                        <select class="form-control" name="driver[]" id="driver-{{ $truck->id }}" required disabled>
                             <option value="" disabled selected>Select Driver</option>
                             @foreach ($truck->drivers as $driver)
                                 @foreach ($drivers as $dr)
