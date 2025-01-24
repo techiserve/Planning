@@ -10,12 +10,22 @@ class TruckController extends Controller
 {
     public function import(Request $request)
     {
+        //dd('done');
         $request->validate([
+
             'file' => 'required|mimes:xlsx,xls,csv',
         ]);
 
-        Excel::import(new TrucksImport, $request->file('file'));
+        $filename = $request->file('file')->getClientOriginalName();
+
+        Excel::import(new TrucksImport($filename), $request->file('file'));
 
         return redirect()->back()->with('success', 'Data imported successfully!');
+    }
+
+
+    public function plan() {
+      
+        return view('planning.import');
     }
 }

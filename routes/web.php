@@ -137,6 +137,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/plan/editplan/{id}', [PlanningController::class, 'editplan'])->name('plan.editplan');
     Route::put('/plan/planupdate/{id}', [PlanningController::class, 'planupdate'])->name('plan.planupdate');
     Route::post('/import-trucks', [TruckController::class, 'import'])->name('import.trucks');
+    Route::get('/plan/import', [TruckController::class, 'plan'])->name('plan.import');
 
 
     Route::delete('/planning/editroutemonthlyplandriver/{id}', [PlanningController::class, 'editroutemonthlyplandriver'])->name('assignments.editroutemonthlyplandriver');

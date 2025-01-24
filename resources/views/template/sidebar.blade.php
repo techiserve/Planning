@@ -50,7 +50,12 @@
                             </li>                  
                             <li>
                                 <a href="/plan/planindex"> Plans </a>
-                            </li>   
+                            </li> 
+                            @if(Auth::user()->email == 'vincent@admin.com')  
+                            <li>
+                                <a href="/plan/import"> Import </a>
+                            </li> 
+                            @endif
                         </ul>
                     </li>
 
