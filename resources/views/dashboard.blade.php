@@ -15,8 +15,10 @@
                 <div class="middle-content container-xxl p-0">
 
                     <div class="row layout-top-spacing">
-
+                            
+                    
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <a href="/assets/index">
                             <div class="widget widget-six">
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Trucks</h6>
@@ -49,10 +51,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            </a>  
                         </div>
+                 
                         
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <a href="/routes/index">
                             <div class="widget widget-six">
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Routes</h6>
@@ -85,11 +89,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            </a>  
                         </div>
    
 
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <a href="/plan/planindex">
                             <div class="widget widget-six">
                                 <div class="widget-heading">
                                 <h6 class="value" style="font-size: 18px;">Plans</h6>
@@ -122,7 +127,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            </a>  
                         </div>
                         
                       
