@@ -47,14 +47,20 @@ class TrucksImport implements ToCollection, WithHeadingRow
     // Trim whitespace from both parts
     $beforeTo = trim($beforeTo);
     $afterTo = trim($afterTo);
+  //  dd($beforeTo, $afterTo);
 
     // Remove text starting from '.' and after
     $afterTo = explode('.', $afterTo)[0];
 
     // dd($beforeTo,$afterTo);
 
-   $route = Route::where('from',$beforeTo)->where('to', $afterTo)->first();
-  // dd($route,$startDate,$clientname,$maxloads);
+  // $route = Route::where('from',$beforeTo)->where('to', $afterTo)->first();
+   $route = Route::where('from', 'like', '%' . $beforeTo . '%')->where('to', 'like', '%' . $afterTo . '%')->first();
+  // dd($route);
+    if(!$route){
+       
+        return redirect()->back()->with('warning', 'Route not found, check your filename!');
+    }
        
     $createplan = Plan::create([
         'date' => $startDate,
@@ -74,6 +80,8 @@ class TrucksImport implements ToCollection, WithHeadingRow
           
             if($index > 3){
 
+               // dd($row);
+
                if($row['5'] != null){
 
                 // dd($row['3'],$row['3802']);  
@@ -90,7 +98,7 @@ class TrucksImport implements ToCollection, WithHeadingRow
                     $updatetruck = Asset::where('registration', $truckid)->update([
 
                         'regNumber1' => $row['3'],
-                        'regNumber2' => $row['3802'], 
+                        'regNumber2' => $row['4'], 
                     ]);
 
                  }else{
@@ -100,7 +108,7 @@ class TrucksImport implements ToCollection, WithHeadingRow
                         'registration' => $truckid,
                         'licenseNumber' => $truckid,
                         'regNumber1' => $row['3'],
-                        'regNumber2' => $row['3802'], 
+                        'regNumber2' => $row['4'], 
                     ]);
 
                  }
