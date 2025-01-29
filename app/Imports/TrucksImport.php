@@ -37,7 +37,7 @@ class TrucksImport implements ToCollection, WithHeadingRow
        $dates = [];
 
      $userId = Auth::user()->id;
-    $product = $rows[$index + 4]['7'];
+    $product = $rows[$index + 4]['9'];
     $maxloads = $rows[$index + 4]['8'];
      $loadingNumber = $rows[$index + 4]['sheet_ver_21'];
     $clientname = $row['ovl_sheet_nr'];
