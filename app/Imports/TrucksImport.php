@@ -36,10 +36,10 @@ class TrucksImport implements ToCollection, WithHeadingRow
 
        $dates = [];
 
-     $userId = Auth::user()->id;
+    $userId = Auth::user()->id;
     $product = $rows[$index + 4]['9'];
     $maxloads = $rows[$index + 4]['8'];
-     $loadingNumber = $rows[$index + 4]['sheet_ver_21'];
+    $loadingNumber = $rows[$index + 4]['sheet_ver_21'];
     $clientname = $row['ovl_sheet_nr'];
   
    list($beforeTo, $afterTo) = explode('to', $this->filename, 2);
@@ -75,6 +75,35 @@ class TrucksImport implements ToCollection, WithHeadingRow
             if($index > 3){
 
                if($row['5'] != null){
+
+                // dd($row['3'],$row['3802']);  
+
+                 $truckid = ucwords(str_replace(' ', '', $row['ovl_sheet_nr']));
+                 $truckid =  str_replace('.', '',  $truckid);
+
+               //  dd( $truckid );
+
+                 $findtruck = Asset::where('registration', $truckid)->first();
+
+                 if($findtruck){
+
+                    $updatetruck = Asset::where('registration', $truckid)->update([
+
+                        'regNumber1' => $row['3'],
+                        'regNumber2' => $row['3802'], 
+                    ]);
+
+                 }else{
+
+                    $findtruck = Asset::create([
+
+                        'registration' => $truckid,
+                        'licenseNumber' => $truckid,
+                        'regNumber1' => $row['3'],
+                        'regNumber2' => $row['3802'], 
+                    ]);
+
+                 }
          
                 list($firstName, $secondName) = explode(' ', $row['5'], 2);
 
@@ -109,7 +138,7 @@ class TrucksImport implements ToCollection, WithHeadingRow
                     'route' => $beforeTo .' to '. $afterTo ,
                     'routeId' => $route->id,
                     'date' => $startDate,
-                    'truck' =>  $row['ovl_sheet_nr'],
+                    'truck' =>  $findtruck->licenseNumber,
                     'trips'  => $maxloads, 
                     'driver_id'  => $driver->id,
                     'createdBy' => $userId
@@ -124,7 +153,7 @@ class TrucksImport implements ToCollection, WithHeadingRow
                     'route' => $beforeTo .' to '. $afterTo ,
                     'routeId' => $route->id,
                     'date' => $startDate,
-                    'truck' =>  $row['ovl_sheet_nr'],
+                    'truck' =>  $findtruck->licenseNumber,
                     'trips'  => $maxloads, 
                     'driver_id'  => $driver->id,
                     'createdBy' => $userId

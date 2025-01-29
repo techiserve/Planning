@@ -58,7 +58,8 @@
                                         href="/plan/editplan/{{ $plan->id }}">
                                     Edit
                             </a>  
-                            <a href="/plan/remove/{{$plan->id}}" class="btn btn-danger btn-md">Delete</a>              
+                            <a href="/plan/remove/{{$plan->id}}" class="btn btn-danger btn-md">Delete</a>  
+                            <a href="/plan/downloadpdf/{{$plan->id}}" class="btn btn-success btn-md">Download Plan</a>            
                                 
             
                             </td>
