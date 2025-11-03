@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('routeresourcePoolStatus')->nullable();
             $table->string('status')->nullable();
             $table->string('checkcode')->nullable();
+           $table->string('eskomAccess')->nullable();
             $table->integer('isAssigned')->nullable();
             $table->string('updatedBy')->nullable();
             $table->string('createdBy')->nullable();

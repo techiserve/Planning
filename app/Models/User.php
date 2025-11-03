@@ -54,4 +54,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+        public function hasAccessTo($module)
+    {
+        $modules = json_decode($this->user_access, true) ?? [];
+        return in_array($module, $modules);
+    }
 }

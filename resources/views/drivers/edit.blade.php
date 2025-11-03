@@ -121,6 +121,24 @@
                                                                         <input type="text" class="form-control form-control-sm" name="statusReason" id="client-phone"  value="{{$driver->statusReason}}">
                                                                     </div>
                                                                 </div> 
+
+
+                                                             <div class="form-group row align-items-center">
+                                                                    <label for="eskom_access" class="col-sm-3 col-form-label col-form-label-sm mb-0">Eskom Access</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <div class="form-check form-check-inline mb-0">
+                                                                            <input class="form-check-input" type="radio" name="eskom_access" id="eskom_yes" value="yes"
+                                                                                {{ $driver->eskomAccess === 'yes' ? 'checked' : '' }}>
+                                                                            <label class="form-check-label" for="eskom_yes">Yes</label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline mb-0">
+                                                                            <input class="form-check-input" type="radio" name="eskom_access" id="eskom_no" value="no"
+                                                                                {{ $driver->eskomAccess === 'no' ? 'checked' : '' }}>
+                                                                            <label class="form-check-label" for="eskom_no">No</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 
                                                             </div> 
                                                             

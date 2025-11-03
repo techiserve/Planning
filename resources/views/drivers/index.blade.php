@@ -32,7 +32,7 @@
                             <th class="checkbox-column"> Record no. </th>
                             <th>Name</th>
                             <th>Surname</th>
-                        
+                            <th>Eskom Access</th>
                             <th>ID Number</th>                    
                             <th>Status</th>
                             <th>Actions</th>
@@ -46,7 +46,9 @@
                             <td><span class="">{{ $asset->name }}</span></td>
                          
                             <td><span class=""> <p class="align-self-center mb-0 user-name">{{ $asset->surname }}</p></span></td>
-                            
+                              <td>
+                            <span class="">{{ $asset->eskomAccess }}</span>
+                           </td>  
                                                                   
                             <td>
                             <span class="">{{ $asset->licenseNumber }}</span>

@@ -126,6 +126,7 @@ class UserController extends Controller
         $userrole->userRole = $request->userole;
         $userrole->employeeNumber = $request->employeeNumber;
         $userrole->password = Hash::make($request->password);
+       $userrole->user_access = $request->modules ? json_encode($request->modules) : json_encode([]);
         $userrole->save();
 
 
@@ -182,7 +183,8 @@ class UserController extends Controller
         $userUpdate = User::where('id',$id)->update([
 
             'name'    =>$request->name, 
-            'email'    =>$request->email,              
+            'email'    =>$request->email,      
+            'user_access' => $request->modules ? json_encode($request->modules) : json_encode([]),        
 
         ]);
 

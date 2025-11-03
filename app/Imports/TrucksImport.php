@@ -29,10 +29,10 @@ class TrucksImport implements ToCollection, WithHeadingRow
     {
         foreach ($rows as $index => $row) {
 
-     //   dd($row['sheet_ver_21'],$row,$rows[$index + 4]);
+        dd($row);
 
-       $startDate = Carbon::parse($row['sheet_ver_21']);
-       $endDate = Carbon::parse($row['sheet_ver_21']);
+       $startDate = Carbon::parse($row[6]);
+       $endDate = Carbon::parse($row[10]);
 
        $dates = [];
 
@@ -167,7 +167,7 @@ class TrucksImport implements ToCollection, WithHeadingRow
                     'createdBy' => $userId
                     
                 ]);
-
+                
              }
 
             }

@@ -70,14 +70,23 @@
                                                             <input type="text" name="licenseNumber" maxlength="13" class="form-control add-payment-method-input">                                                                                                                                                                                                                        
                                                             </div>
                                                         </div>
+                                                       
 
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                             
-                                                            <label class="form-label">Check Code</label>
-                                                            <input type="text" name="checkcode"  class="form-control add-payment-method-input">     
+                                                          <div class="col-md-4">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label d-block">Eskom Access</label><br/>
+
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="eskom_access" id="eskom_yes" value="yes">
+                                                                        <label class="form-check-label" for="eskom_yes">Yes</label>
+                                                                    </div>
+
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="eskom_access" id="eskom_no" value="no" checked>
+                                                                        <label class="form-check-label" for="eskom_no">No</label>
                                                                     </div>
                                                                 </div>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">

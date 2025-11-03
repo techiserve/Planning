@@ -28,6 +28,7 @@ class Driver extends Model
         'statusReason',
         'createdBy',
         'checkcode',
+        'eskomAccess',
         'updatedBy',
        
     ];

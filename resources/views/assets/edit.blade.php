@@ -239,10 +239,9 @@
                                                           
                                                                     <select name="statusReason" class="form-select"  />
                                                                     <option value="">Choose...</option>
-                                                                    <option value="Broken down">Broken down</option>
-                                                                    <option value="Under Maintenance">Under Maintenance</option>
-                                                                    <option value="Involved in Accident">Involved in Accident</option> 
-                                                                    <option value="Repaired">Repaired</option>                                                                                                                 
+                                                                    <option value="Break down">Break down</option>
+                                                                    <option value="Maintenance">Maintenance</option>
+                                                                    <option value="Other">Other</option>                                                                                                                 
                                                                    </select>  
                                                                  
                                                                 </div>

@@ -27,7 +27,7 @@
                 </li>
 
                     
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2 || Auth::user()->userRole == 3)
+                    @if(auth()->user()->hasAccessTo('planning') || Auth::user()->userRole == 1 )
 
                     <li class="menu">                  
                         <a href="#plan" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -51,25 +51,22 @@
                             <li>
                                 <a href="/plan/planindex"> Plans </a>
                             </li> 
-                            @if(Auth::user()->email == 'vincent@admin.com')  
+                            {{-- @if(Auth::user()->email == 'vincent@admin.com')  
                             <li>
                                 <a href="/plan/import"> Import </a>
                             </li> 
-                            @endif
+                            @endif --}}
                         </ul>
                     </li>
-
                     @endif
-
-
-                 
+          
                     <li class="menu">
                     <li class="menu menu-heading">
                     <div class="heading" style="background-color: #7E7B7F; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 50px 10px 10px;border-radius: 15px 15px 15px 15px;">
                         <span style="color: white;font-size:15px;">Enablers Modules</span>
                     </div>
                 </li>
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
+                    @if(auth()->user()->hasAccessTo('assets')|| Auth::user()->userRole == 1 )
                     <!-- Asset Management -->
                     <li class="menu">
                         <a href="#asset" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -93,7 +90,7 @@
                     </li>
                     @endif
 
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
+                   @if(auth()->user()->hasAccessTo('drivers')|| Auth::user()->userRole == 1 )
                    
                     <li class="menu">
                         <a href="#driver" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -116,7 +113,7 @@
                     </li>
                     @endif
 
-                    @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 2  || Auth::user()->userRole == 4)
+                 @if(auth()->user()->hasAccessTo('routes') || Auth::user()->userRole == 1 )
                     <!-- Contract Management -->
                     <li class="menu">
                         <a href="#contract" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -138,59 +135,8 @@
                     </li>
                     @endif
                     
-                    <!-- @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
-                  
-                    <li class="menu">
-                        <a href="#contract" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <span>Contract Management</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="contract" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="/contracts/create"> Create Contract </a>
-                            </li>
-                            <li>
-                                <a href="/contracts/index"> Manage Contracts </a>
-                            </li>
-                            <li>
-                                <a href="/contracts/parameters"> Parameters </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @endif -->
 
-                    <!-- @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
-                   
-                    <li class="menu">
-                        <a href="#assignments" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <span>Assignments</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="assignments" data-bs-parent="#accordionExample">
-                            
-                            <li>
-                                <a href="/assignments/routesasset"> Routes and Assets </a>
-                            </li>
-                            <li>
-                                <a href="/assignments/assetdriver"> Assets and Driver </a>
-                            </li>
-                            <li>
-                                <a href="/assignments/index"> Manage Assignments </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    @endif -->
-
-                    @if(Auth::user()->userRole == 1 )
+                 @if(auth()->user()->hasAccessTo('users') || Auth::user()->userRole == 1 )
                     <li class="menu menu-heading">
                     <div class="heading" style="background-color: #7E7B7F; border: 1px solid gray; padding: 10px;margin-left: 30px; display: inline-block; padding: 10px 130px 10px 10px;border-radius: 15px 15px 15px 15px;">
                         <span style="color: white;font-size:15px;">Users</span>
